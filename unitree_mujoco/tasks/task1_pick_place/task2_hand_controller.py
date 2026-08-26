@@ -1240,7 +1240,7 @@ class Task2HandController:
                 self.holding = False
                 if self._cube_on_pad():
                     print("[Task2Hand] object seated on the pad")
-                    self._set_phase("done")
+                    self._set_phase("withdraw")
                 else:
                     self._set_phase("verify_place")
             elif self.phase_time > 3.0:
@@ -1259,9 +1259,21 @@ class Task2HandController:
             self.settle_time += dt
             if self.settle_time > 1.5:
                 if self._cube_on_pad():
-                    self._set_phase("done")
+                    self._set_phase("withdraw")
                 else:
                     self._begin_recover("cube did not settle on the pad")
+
+        elif self.phase == "withdraw":
+            # Lift off the seated object and ease back a little, then freeze.
+            self._set_fingers_open()
+            leave_pose = self._backed_off(
+                np.array([pad[0], pad[1], self.clear_z]), 0.08
+            )
+            pos_error, tilt = self._track(leave_pose, self.speed_slow, dt)
+            if self._reached(pos_error, tilt, self.pos_tol_approach):
+                self._set_phase("done")
+            elif self.phase_time > 4.0:
+                self._set_phase("done")
 
         elif self.phase == "recover":
             self._set_fingers_open()
