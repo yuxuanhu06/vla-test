@@ -1,6 +1,7 @@
 ROBOT = "g1" # Robot name, "go2", "b2", "b2w", "h1", "go2w", "g1" 
 # ROBOT_SCENE = "../unitree_robots/" + ROBOT + "/scene.xml" # Robot scene
-ROBOT_SCENE = "../tasks/task1_pick_place/task1.xml"
+TASK = "task1"  # "task1" or "task2"; overridden by argv
+ROBOT_SCENE = "../tasks/task1_pick_place/" + TASK + ".xml"
 DOMAIN_ID = 1 # Domain id
 INTERFACE = "lo0" # Interface 
 

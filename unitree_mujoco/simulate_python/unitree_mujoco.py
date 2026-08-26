@@ -13,20 +13,39 @@ import config
 
 
 # ---------------------------------------------------------
-# Import Task1 controller
+# Task selection: argv overrides config.TASK
+# mjpython ./unitree_mujoco.py task1
+# mjpython ./unitree_mujoco.py task2
 # ---------------------------------------------------------
 
-TASK1_DIR = os.path.abspath(
+TASK = sys.argv[1] if len(sys.argv) > 1 else config.TASK
+if TASK not in ("task1", "task2"):
+    print("Usage: mjpython ./unitree_mujoco.py [task1|task2]")
+    sys.exit(1)
+
+config.TASK = TASK
+config.ROBOT_SCENE = "../tasks/task1_pick_place/" + TASK + ".xml"
+print("Running", config.TASK)
+
+
+# ---------------------------------------------------------
+# Import task controller
+# ---------------------------------------------------------
+
+TASK_DIR = os.path.abspath(
     os.path.join(
         os.path.dirname(__file__),
         "../tasks/task1_pick_place",
     )
 )
 
-if TASK1_DIR not in sys.path:
-    sys.path.append(TASK1_DIR)
+if TASK_DIR not in sys.path:
+    sys.path.append(TASK_DIR)
 
-from task1_hand_controller import Task1HandController
+if config.TASK == "task2":
+    from task2_hand_controller import Task2HandController as TaskController
+else:
+    from task1_hand_controller import Task1HandController as TaskController
 
 
 # ---------------------------------------------------------
@@ -50,10 +69,10 @@ print("Number of actuators:", mj_model.nu)
 
 
 # ---------------------------------------------------------
-# Task1 controller
+# Task controller
 # ---------------------------------------------------------
 
-task1_controller = Task1HandController(
+task_controller = TaskController(
     mj_model,
     mj_data,
 )
@@ -146,12 +165,12 @@ def SimulationThread():
                     )
 
             # ---------------------------------------------
-            # Task1 controller
+            # Task controller
             # IMPORTANT:
             # write controls BEFORE mj_step()
             # ---------------------------------------------
 
-            task1_controller.step()
+            task_controller.step()
 
             # ---------------------------------------------
             # MuJoCo physics
