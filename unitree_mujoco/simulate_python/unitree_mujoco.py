@@ -16,11 +16,12 @@ import config
 # Task selection: argv overrides config.TASK
 # mjpython ./unitree_mujoco.py task1
 # mjpython ./unitree_mujoco.py task2
+# mjpython ./unitree_mujoco.py task3
 # ---------------------------------------------------------
 
 TASK = sys.argv[1] if len(sys.argv) > 1 else config.TASK
-if TASK not in ("task1", "task2"):
-    print("Usage: mjpython ./unitree_mujoco.py [task1|task2]")
+if TASK not in ("task1", "task2", "task3"):
+    print("Usage: mjpython ./unitree_mujoco.py [task1|task2|task3]")
     sys.exit(1)
 
 config.TASK = TASK
@@ -42,7 +43,9 @@ TASK_DIR = os.path.abspath(
 if TASK_DIR not in sys.path:
     sys.path.append(TASK_DIR)
 
-if config.TASK == "task2":
+if config.TASK == "task3":
+    from task3_hand_controller import Task3HandController as TaskController
+elif config.TASK == "task2":
     from task2_hand_controller import Task2HandController as TaskController
 else:
     from task1_hand_controller import Task1HandController as TaskController
