@@ -1,0 +1,52 @@
+{
+  "task_id": "task1",
+  "episode_id": "ep_000005",
+  "num_steps": 20,
+  "return": 2.0999999046325684,
+  "phase_returns": {
+    "abort_retract": 1.0,
+    "approach_side": 1.0999999046325684
+  },
+  "episode_kind": "space_constraint",
+  "instruction": "Grasp the block with the left hand and set it on the green square.",
+  "paraphrase_id": 2,
+  "is_success": false,
+  "failure_reason": "space_constraint",
+  "action_mode": "retract",
+  "fps": 10.0,
+  "sim_time": 1.9299999999999808,
+  "controller_phase": "abort_retract",
+  "placed": false,
+  "kind": "space_constraint",
+  "layout_subtype": "blocked_approach",
+  "cube_xy": [
+    0.3309286713079683,
+    0.25145964097886425
+  ],
+  "pad_xy": [
+    0.31,
+    0.08
+  ],
+  "cube_yaw": 0.23413022374997416,
+  "tipped": false,
+  "distractors": [
+    {
+      "name": "junk_0",
+      "xy": [
+        0.2609286713079683,
+        0.25145964097886425
+      ]
+    }
+  ],
+  "cube_finish": "matte",
+  "cube_rgb": [
+    0.9027034263907354,
+    0.6558663891855319,
+    0.4549100259232348
+  ],
+  "table_rgb": [
+    0.2621490590538107,
+    0.3443429279806073,
+    0.4488223762080449
+  ]
+}

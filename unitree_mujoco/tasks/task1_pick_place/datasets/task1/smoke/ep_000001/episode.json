@@ -1,0 +1,76 @@
+{
+  "task_id": "task1",
+  "episode_id": "ep_000001",
+  "num_steps": 160,
+  "return": 7.6999993324279785,
+  "phase_returns": {
+    "descend_side": 1.1500000953674316,
+    "done": 0.0,
+    "grasp": 0.0,
+    "insert": 0.25,
+    "lift_check": 2.0,
+    "lower": 0.8999999761581421,
+    "move_above_target": 1.3499999046325684,
+    "open": 1.0,
+    "release": 0.05000000074505806,
+    "rise": 0.0,
+    "squeeze": 0.0,
+    "verify_place": 1.0
+  },
+  "episode_kind": "success",
+  "instruction": "Grasp the block with the left hand and set it on the green square.",
+  "paraphrase_id": 2,
+  "is_success": true,
+  "failure_reason": null,
+  "action_mode": "delta_q",
+  "fps": 10.0,
+  "sim_time": 15.940000000001092,
+  "controller_phase": "done",
+  "placed": true,
+  "kind": "success",
+  "layout_subtype": "working_band",
+  "cube_xy": [
+    0.3770936698275977,
+    0.2320419864336942
+  ],
+  "pad_xy": [
+    0.30857699105594694,
+    0.1115772689756939
+  ],
+  "cube_yaw": 0.10075425708137437,
+  "tipped": false,
+  "distractors": [
+    {
+      "name": "junk_0",
+      "xy": [
+        0.6214804949001715,
+        -0.21265279675199103
+      ]
+    },
+    {
+      "name": "junk_1",
+      "xy": [
+        0.6416303729167053,
+        0.05572658589014676
+      ]
+    },
+    {
+      "name": "junk_2",
+      "xy": [
+        0.6784380790936131,
+        0.04565608001298402
+      ]
+    }
+  ],
+  "cube_finish": "matte",
+  "cube_rgb": [
+    0.6630625353115,
+    0.7780292343211669,
+    0.6243528144834272
+  ],
+  "table_rgb": [
+    0.6119348365672748,
+    0.43022273483683016,
+    0.43098888645659317
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "task_id": "task1",
+  "episode_id": "ep_000001",
+  "num_steps": 20,
+  "return": 2.1500000953674316,
+  "phase_returns": {
+    "abort_retract": 1.0,
+    "approach_side": 1.1499998569488525
+  },
+  "episode_kind": "space_constraint",
+  "instruction": "Place the red object on the green pad.",
+  "paraphrase_id": 4,
+  "is_success": false,
+  "failure_reason": "space_constraint",
+  "action_mode": "retract",
+  "fps": 10.0,
+  "sim_time": 1.9299999999999808,
+  "controller_phase": "abort_retract",
+  "placed": false,
+  "kind": "space_constraint",
+  "layout_subtype": "pad_jammed",
+  "cube_xy": [
+    0.32798061775872855,
+    0.2776845244202599
+  ],
+  "pad_xy": [
+    0.3579806177587286,
+    0.2576845244202599
+  ],
+  "cube_yaw": -0.07062815074766829,
+  "tipped": false,
+  "distractors": [],
+  "cube_finish": "matte",
+  "cube_rgb": [
+    0.5386682870654312,
+    0.807338559012721,
+    0.8972348127649997
+  ],
+  "table_rgb": [
+    0.4643414069013685,
+    0.32702816509176813,
+    0.47686501660983316
+  ]
+}

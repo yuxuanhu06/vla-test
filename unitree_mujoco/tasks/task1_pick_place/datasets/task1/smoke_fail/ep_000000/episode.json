@@ -1,0 +1,44 @@
+{
+  "task_id": "task1",
+  "episode_id": "ep_000000",
+  "num_steps": 20,
+  "return": 2.0999999046325684,
+  "phase_returns": {
+    "abort_retract": 1.0,
+    "approach_side": 1.0999999046325684
+  },
+  "episode_kind": "space_constraint",
+  "instruction": "Pick the block up and deliver it to the green region.",
+  "paraphrase_id": 5,
+  "is_success": false,
+  "failure_reason": "space_constraint",
+  "action_mode": "retract",
+  "fps": 10.0,
+  "sim_time": 1.9299999999999808,
+  "controller_phase": "abort_retract",
+  "placed": false,
+  "kind": "space_constraint",
+  "layout_subtype": "pad_jammed",
+  "cube_xy": [
+    0.33555685695916415,
+    0.24540386020089647
+  ],
+  "pad_xy": [
+    0.3655568569591642,
+    0.22540386020089648
+  ],
+  "cube_yaw": 0.11597102373492063,
+  "tipped": false,
+  "distractors": [],
+  "cube_finish": "smooth",
+  "cube_rgb": [
+    0.36582937101109625,
+    0.9439810717600817,
+    0.16322210842282328
+  ],
+  "table_rgb": [
+    0.4836496766719489,
+    0.551223108541199,
+    0.4489937453059826
+  ]
+}
