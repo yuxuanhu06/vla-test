@@ -1,0 +1,272 @@
+<mujoco model="g1_pick_by_type_collect">
+
+  <include file="g1_with_hand.xml"/>
+
+  <compiler
+    angle="radian"
+    meshdir="meshes"
+    texturedir="data_collection/assets"/>
+
+  <statistic center="0 0 0.5" extent="2.0"/>
+
+  <option cone="elliptic" impratio="10"/>
+
+  <default>
+    <default class="g1">
+      <position kp="1500" kv="100" forcerange="-80 80"/>
+    </default>
+  </default>
+
+  <visual>
+    <headlight
+      diffuse="0.6 0.6 0.6"
+      ambient="0.3 0.3 0.3"
+      specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="-130" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture
+      type="skybox"
+      builtin="gradient"
+      rgb1="0.3 0.5 0.7"
+      rgb2="0 0 0"
+      width="512"
+      height="3072"/>
+
+    <texture
+      type="2d"
+      name="task_groundplane_tex"
+      builtin="checker"
+      mark="edge"
+      rgb1="0.2 0.3 0.4"
+      rgb2="0.1 0.2 0.3"
+      markrgb="0.8 0.8 0.8"
+      width="300"
+      height="300"/>
+
+    <texture
+      type="2d"
+      name="table_checker_tex"
+      builtin="checker"
+      rgb1="0.45 0.30 0.18"
+      rgb2="0.62 0.42 0.24"
+      width="256"
+      height="256"/>
+
+    <texture
+      type="2d"
+      name="table_wood_tex"
+      file="table_wood.png"/>
+
+    <material
+      name="task_groundplane_mat"
+      texture="task_groundplane_tex"
+      texuniform="true"
+      texrepeat="5 5"
+      reflectance="0.2"/>
+
+    <material
+      name="table_png_mat"
+      texture="table_wood_tex"
+      texuniform="true"
+      texrepeat="2 2"
+      reflectance="0.1"
+      rgba="0.55 0.35 0.20 1"/>
+
+    <material
+      name="table_checker_mat"
+      texture="table_checker_tex"
+      texuniform="true"
+      texrepeat="4 4"
+      reflectance="0.05"
+      rgba="0.55 0.35 0.20 1"/>
+
+    <material name="obj_tri_prism_mat" rgba="1 0.85 0 1" reflectance="0" specular="0.1"/>
+    <material name="obj_cylinder_mat" rgba="0.15 0.35 0.95 1" reflectance="0" specular="0.1"/>
+    <material name="obj_cube_mat" rgba="1 0.45 0.1 1" reflectance="0" specular="0.1"/>
+    <material name="obj_rect_prism_mat" rgba="0.85 0.15 0.7 1" reflectance="0" specular="0.1"/>
+
+    <mesh name="tri_prism" vertex="
+       0.011  0       -0.055
+      -0.0055  0.00953 -0.055
+      -0.0055 -0.00953 -0.055
+       0.011  0        0.055
+      -0.0055  0.00953  0.055
+      -0.0055 -0.00953  0.055
+    " face="0 1 2  3 5 4  0 3 4  0 4 1  1 4 5  1 5 2  2 5 3  2 3 0"/>
+  </asset>
+
+  <worldbody>
+
+    <light
+      name="task_key_light"
+      pos="0 0 1.5"
+      dir="0 0 -1"
+      directional="true"/>
+
+    <camera
+      name="cam_scene"
+      pos="1.25 -0.95 1.60"
+      xyaxes="0.78 0.63 0 -0.28 0.35 0.89"
+      fovy="50"/>
+
+    <camera
+      name="cam_ego"
+      pos="0.10 0.14 1.40"
+      xyaxes="0.05 1.00 0 -0.45 0.02 0.89"
+      fovy="55"/>
+
+    <geom
+      name="task_floor_geom"
+      size="0 0 0.05"
+      type="plane"
+      material="task_groundplane_mat"/>
+
+    <body name="table" pos="0.5 0 0.82">
+      <geom
+        name="table_top"
+        type="box"
+        size="0.40 0.40 0.03"
+        material="table_png_mat"/>
+      <geom
+        name="table_leg_fl"
+        type="box"
+        pos="0.35 0.35 -0.425"
+        size="0.035 0.035 0.395"
+        rgba="0.55 0.35 0.20 1"/>
+      <geom
+        name="table_leg_fr"
+        type="box"
+        pos="0.35 -0.35 -0.425"
+        size="0.035 0.035 0.395"
+        rgba="0.55 0.35 0.20 1"/>
+      <geom
+        name="table_leg_bl"
+        type="box"
+        pos="-0.35 0.35 -0.425"
+        size="0.035 0.035 0.395"
+        rgba="0.55 0.35 0.20 1"/>
+      <geom
+        name="table_leg_br"
+        type="box"
+        pos="-0.35 -0.35 -0.425"
+        size="0.035 0.035 0.395"
+        rgba="0.55 0.35 0.20 1"/>
+    </body>
+
+    <body name="obj_tri_prism" pos="0.40 0.068 0.906">
+      <freejoint/>
+      <geom
+        name="obj_tri_prism_visual"
+        type="mesh"
+        mesh="tri_prism"
+        contype="0"
+        conaffinity="0"
+        group="1"
+        density="0"
+        material="obj_tri_prism_mat"/>
+      <geom
+        name="obj_tri_prism_geom"
+        type="box"
+        size="0.011 0.011 0.055"
+        mass="0.08"
+        friction="2.2 0.4 0.02"
+        condim="6"
+        solref="0.02 1"
+        solimp="0.9 0.95 0.001"
+        rgba="1 0.85 0 0"/>
+    </body>
+
+    <body name="obj_cylinder" pos="0.40 0.153 0.906">
+      <freejoint/>
+      <geom
+        name="obj_cylinder_geom"
+        type="cylinder"
+        size="0.011 0.055"
+        mass="0.08"
+        friction="2.2 0.4 0.02"
+        condim="6"
+        solref="0.02 1"
+        solimp="0.9 0.95 0.001"
+        material="obj_cylinder_mat"/>
+    </body>
+
+    <body name="obj_cube" pos="0.40 0.25 0.906">
+      <freejoint/>
+      <geom
+        name="obj_cube_geom"
+        type="box"
+        size="0.011 0.011 0.055"
+        mass="0.08"
+        friction="2.2 0.4 0.02"
+        condim="6"
+        solref="0.02 1"
+        solimp="0.9 0.95 0.001"
+        material="obj_cube_mat"/>
+    </body>
+
+    <body name="obj_rect_prism" pos="0.40 0.343 0.906">
+      <freejoint/>
+      <geom
+        name="obj_rect_prism_geom"
+        type="box"
+        size="0.011 0.014 0.055"
+        mass="0.08"
+        friction="2.2 0.4 0.02"
+        condim="6"
+        solref="0.02 1"
+        solimp="0.9 0.95 0.001"
+        material="obj_rect_prism_mat"/>
+    </body>
+
+    <body name="green_target" pos="0.44 -0.12 0.855">
+      <geom
+        name="green_target_geom"
+        type="box"
+        size="0.10 0.10 0.005"
+        rgba="0 1 0 0.5"
+        friction="2.0 0.4 0.02"
+        condim="6"/>
+    </body>
+
+    <body name="junk_sphere" pos="1.70 0.86 0.04">
+      <freejoint/>
+      <geom
+        name="junk_sphere_geom"
+        type="sphere"
+        size="0.028"
+        mass="0.04"
+        rgba="0.35 0.55 0.65 1"/>
+    </body>
+
+    <body name="junk_0" pos="1.70 0.70 0.03">
+      <freejoint/>
+      <geom
+        name="junk_0_geom"
+        type="box"
+        size="0.025 0.025 0.025"
+        mass="0.05"
+        rgba="0.4 0.4 0.55 1"/>
+    </body>
+
+    <body name="junk_1" pos="1.78 0.70 0.03">
+      <freejoint/>
+      <geom
+        name="junk_1_geom"
+        type="box"
+        size="0.03 0.018 0.022"
+        mass="0.04"
+        rgba="0.25 0.5 0.45 1"/>
+    </body>
+
+  </worldbody>
+
+  <equality>
+    <weld
+      name="pelvis_support"
+      body1="pelvis"/>
+  </equality>
+
+</mujoco>

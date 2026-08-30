@@ -21,6 +21,7 @@ if TASK_DIR not in sys.path:
 from task1_hand_controller import Task1HandController
 
 from data_collection.boundary_policy import BoundaryPolicy
+from data_collection.libero_writer import LiberoPackWriter
 from data_collection.randomize import randomize_episode
 from data_collection.recorder import (
     EpisodeRecorder,
@@ -80,6 +81,8 @@ def run_episode(model, kind, rng, seconds, verbose):
     data = mujoco.MjData(model)
     mujoco.mj_forward(model, data)
     variant = randomize_episode(model, data, kind, rng)
+    mujoco.mj_forward(model, data)
+    init_state = data.qpos.copy()
     instruction, paraphrase_id = instruction_for(kind, rng)
 
     sink = io.StringIO()
@@ -155,29 +158,63 @@ def run_episode(model, kind, rng, seconds, verbose):
         "sim_time": float(data.time),
         "controller_phase": controller.phase,
         "placed": placed,
+        "init_state": init_state,
         **variant,
     }
     return recorder, meta, sink.getvalue()
 
 
-def _validate_smoke(rows):
+def _validate_packed(hdf5_path, model_nq, rows):
+    import h5py
+
     errors = []
     for row in rows:
         if row["num_steps"] < 1:
-            errors.append(f"{row['episode_id']} has no steps")
+            errors.append(f"{row['demo_id']} has no steps")
         if row["episode_kind"] == "success" and not row["is_success"]:
-            errors.append(f"{row['episode_id']} success kind but is_success=false")
+            errors.append(f"{row['demo_id']} success kind but is_success=false")
         if row["episode_kind"] != "success":
             if row["is_success"]:
-                errors.append(f"{row['episode_id']} failure kind marked success")
+                errors.append(f"{row['demo_id']} failure kind marked success")
             if not row["failure_reason"]:
-                errors.append(f"{row['episode_id']} missing failure_reason")
-        if row["num_steps"] != row["_t_phase"]:
-            errors.append(f"{row['episode_id']} phase/reward length mismatch")
-        if row["episode_kind"] == "success" and row["is_success"]:
-            terms = row.get("phase_returns") or {}
-            if row["return"] <= 0.0:
-                errors.append(f"{row['episode_id']} success return is not positive")
+                errors.append(f"{row['demo_id']} missing failure_reason")
+        if row["episode_kind"] == "success" and row["is_success"] and row["return"] <= 0.0:
+            errors.append(f"{row['demo_id']} success return is not positive")
+
+    with h5py.File(hdf5_path, "r") as handle:
+        for gname, expect_ok in (("data", True), ("data_fail", False)):
+            group = handle[gname]
+            if "language_instruction" not in group.attrs:
+                errors.append(f"{gname} missing language_instruction")
+            if "language_instruction_subtitle" not in group.attrs:
+                errors.append(f"{gname} missing language_instruction_subtitle")
+            demos = sorted(
+                [k for k in group.keys() if k.startswith("demo_")],
+                key=lambda k: int(k.split("_")[1]),
+            )
+            for name in demos:
+                demo = group[name]
+                t = int(demo["actions"].shape[0])
+                if demo["actions"].shape[1] != 15:
+                    errors.append(f"{gname}/{name} actions dim != 15")
+                rgb = demo["obs/agentview_rgb"]
+                if rgb.shape[1:] != (224, 224, 3):
+                    errors.append(f"{gname}/{name} bad agentview shape {rgb.shape}")
+                if demo["states"].shape[1] != model_nq:
+                    errors.append(
+                        f"{gname}/{name} states width {demo['states'].shape[1]} != nq {model_nq}"
+                    )
+                if int(demo["dones"][-1]) != 1:
+                    errors.append(f"{gname}/{name} dones[-1] != 1")
+                ok = bool(demo.attrs["is_success"])
+                if ok != expect_ok:
+                    errors.append(f"{gname}/{name} is_success={ok} in {gname}")
+                if int(demo["rewards"][-1]) != int(ok):
+                    errors.append(f"{gname}/{name} rewards[-1] != is_success")
+                if not demo.attrs.get("instruction"):
+                    errors.append(f"{gname}/{name} missing instruction")
+                if expect_ok is False and not demo.attrs.get("failure_reason"):
+                    errors.append(f"{gname}/{name} missing failure_reason")
     return errors
 
 
@@ -203,13 +240,14 @@ def main():
 
     rng = np.random.default_rng(args.seed)
     model = mujoco.MjModel.from_xml_path(SCENE)
+    hdf5_path = os.path.join(out_root, "pick_place_task1.hdf5")
+    writer = LiberoPackWriter(hdf5_path, model.nq)
 
     print(
-        f"collecting {args.n} Task 1 episode(s) to {out_root} "
+        f"collecting {args.n} Task 1 episode(s) to {hdf5_path} "
         f"(seed={args.seed}, {args.seconds:.0f}s cap)",
         flush=True,
     )
-    rows = []
     for index in range(args.n):
         kind = _kind_for(index, args.n, kinds)
         # Fresh model so visual mutations do not leak across episodes.
@@ -225,23 +263,22 @@ def main():
                 )
                 if meta["is_success"]:
                     break
-        episode_id = f"ep_{index:06d}"
-        ep_dir = os.path.join(out_root, episode_id)
-        payload = recorder.write(ep_dir, episode_id, meta)
-        payload["_t_phase"] = recorder.num_steps
-        rows.append(payload)
+        row = writer.append(recorder, meta)
         print(
-            f"  {episode_id}  {kind:18s}  "
-            f"{'PASS' if payload['is_success'] else 'FAIL':4s}  "
-            f"reason={payload['failure_reason']}  "
-            f"T={payload['num_steps']:4d}  R={payload['return']:+6.2f}  "
-            f"finish={payload['cube_finish']}",
+            f"  {row['group']}/{row['demo_id']}  {kind:18s}  "
+            f"{'PASS' if row['is_success'] else 'FAIL':4s}  "
+            f"reason={row['failure_reason']}  "
+            f"T={row['num_steps']:4d}  R={row['return']:+6.2f}  "
+            f"finish={row['cube_finish']}",
             flush=True,
         )
 
-    errors = _validate_smoke(rows)
+    manifest_path = os.path.join(out_root, "manifest.json")
+    writer.write_manifest(manifest_path)
+    writer.finalize()
+    errors = _validate_packed(hdf5_path, model.nq, writer.rows)
     print()
-    print(f"wrote {len(rows)} episodes")
+    print(f"wrote {len(writer.rows)} demos to {hdf5_path}")
     if errors:
         print("SMOKE CHECKS FAILED:")
         for err in errors:

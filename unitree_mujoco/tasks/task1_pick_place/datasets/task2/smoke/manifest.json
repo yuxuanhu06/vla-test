@@ -1,0 +1,1415 @@
+{
+  "task_id": "task2",
+  "language_instruction": "Pick up the requested object and place it on the green pad.",
+  "hdf5": "libero_style.hdf5",
+  "num_success": 4,
+  "num_fail": 6,
+  "demos": [
+    {
+      "group": "data",
+      "demo_id": "demo_0",
+      "num_steps": 387,
+      "return": 9.0,
+      "phase_returns": {
+        "approach_side": 1.249999761581421,
+        "descend_side": 1.2000000476837158,
+        "done": 1.0,
+        "grasp": 0.0,
+        "identify": 0.0,
+        "insert": 0.25,
+        "lift_check": 3.0,
+        "move_above_target": 2.299999952316284,
+        "receive": 1.0,
+        "recover": -1.0,
+        "squeeze": 0.0,
+        "understand": 0.0
+      },
+      "episode_kind": "success",
+      "instruction": "Pick the tri prism up and deliver it to the green region.",
+      "paraphrase_id": "tri_prism:success",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 38.700000000001346,
+      "controller_phase": "done",
+      "placed": true,
+      "decision_ok": true,
+      "chosen_type": "tri_prism",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "cylinder": 2.1838437425469557e-06,
+        "cube": 3.028667579162575e-12,
+        "rect_prism": 3.048509988634894e-12
+      },
+      "kind": "success",
+      "layout_subtype": "working_row",
+      "required_type": "tri_prism",
+      "reachable_types": [
+        "cylinder",
+        "cube",
+        "rect_prism",
+        "tri_prism"
+      ],
+      "unreachable_types": [],
+      "standing_types": [
+        "cylinder",
+        "cube",
+        "rect_prism",
+        "tri_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [],
+      "objects": {
+        "cylinder": {
+          "xy": [
+            0.3892256883597499,
+            0.0850835118163698
+          ],
+          "yaw": -0.16369878175235125,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.17686846024437147,
+            0.7337243571439552,
+            0.958953676704966
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "xy": [
+            0.3820808520425764,
+            0.1595083840068452
+          ],
+          "yaw": 0.03213295439474026,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.7084959013436388,
+            0.38976951242990776,
+            0.48814977695812667
+          ],
+          "finish": "smooth"
+        },
+        "rect_prism": {
+          "xy": [
+            0.3961820735928612,
+            0.2485101809994786
+          ],
+          "yaw": -0.08052154687243096,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.9477679486313688,
+            0.934668271020984,
+            0.8951377828803448
+          ],
+          "finish": "smooth"
+        },
+        "tri_prism": {
+          "xy": [
+            0.38794052178037025,
+            0.33888972810861884
+          ],
+          "yaw": 0.06879795118254373,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.5848999931723382,
+            0.7008215500510444,
+            0.8026828432972257
+          ],
+          "finish": "matte"
+        }
+      },
+      "pad_xy": [
+        0.41995154439682136,
+        -0.08578868894935023
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.5742639143011529,
+            -0.042722962115072705
+          ]
+        }
+      ],
+      "table_texture": "checker",
+      "table_rgb": [
+        0.38489335688193516,
+        0.27048676196809734,
+        0.25826381776426455
+      ],
+      "table_finish": "smooth"
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_1",
+      "num_steps": 417,
+      "return": 7.34999942779541,
+      "phase_returns": {
+        "approach_side": 2.549999713897705,
+        "descend_side": 1.1500000953674316,
+        "done": 1.0,
+        "grasp": 0.0,
+        "identify": 0.0,
+        "insert": 0.25,
+        "lift_check": 2.700000047683716,
+        "move_above_target": 0.6999999284744263,
+        "receive": 0.0,
+        "recover": -1.0,
+        "squeeze": 0.0,
+        "understand": 0.0
+      },
+      "episode_kind": "success",
+      "instruction": "Take the tube and put it onto the green square.",
+      "paraphrase_id": "cylinder:success",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 41.61500000000284,
+      "controller_phase": "done",
+      "placed": true,
+      "decision_ok": true,
+      "chosen_type": "cylinder",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "tri_prism": 0.0,
+        "cube": 4.102866478043315e-12,
+        "rect_prism": 5.0830683753763865e-12
+      },
+      "kind": "success",
+      "layout_subtype": "working_row",
+      "required_type": "cylinder",
+      "reachable_types": [
+        "cylinder",
+        "tri_prism",
+        "cube",
+        "rect_prism"
+      ],
+      "unreachable_types": [],
+      "standing_types": [
+        "cylinder",
+        "tri_prism",
+        "cube",
+        "rect_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [],
+      "objects": {
+        "cylinder": {
+          "xy": [
+            0.3816087288361841,
+            0.09552151344225099
+          ],
+          "yaw": 0.012864189389737657,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.4078293797918654,
+            0.7873113461968436,
+            0.8086923851453707
+          ],
+          "finish": "smooth"
+        },
+        "tri_prism": {
+          "xy": [
+            0.40845947296471036,
+            0.17971344075178317
+          ],
+          "yaw": 0.12529763814567696,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.9397589139148345,
+            0.7167350055310928,
+            0.7813236989641168
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "xy": [
+            0.4027610341705343,
+            0.2619040369679128
+          ],
+          "yaw": 0.1988041172289967,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.5831279869041316,
+            0.7000902070320768,
+            0.4755582405114449
+          ],
+          "finish": "matte"
+        },
+        "rect_prism": {
+          "xy": [
+            0.413038288886816,
+            0.3324996014077043
+          ],
+          "yaw": -0.05977807545284475,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.9111357307800394,
+            0.8315007297874055,
+            0.261145343296158
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_xy": [
+        0.4171021440020674,
+        -0.14083252005460972
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [],
+      "table_texture": "checker",
+      "table_rgb": [
+        0.4409073899831194,
+        0.4127728080503522,
+        0.7470133856049921
+      ],
+      "table_finish": "smooth"
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_2",
+      "num_steps": 421,
+      "return": 8.299999237060547,
+      "phase_returns": {
+        "approach_side": 2.549999713897705,
+        "descend_side": 1.1500000953674316,
+        "done": 1.0,
+        "grasp": 0.0,
+        "identify": 0.0,
+        "insert": 0.20000000298023224,
+        "lift_check": 2.799999952316284,
+        "move_above_target": 1.5999999046325684,
+        "receive": 0.0,
+        "recover": -1.0,
+        "squeeze": 0.0,
+        "understand": 0.0
+      },
+      "episode_kind": "success",
+      "instruction": "Place the box on the green pad.",
+      "paraphrase_id": "cube:success",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 42.09000000000308,
+      "controller_phase": "done",
+      "placed": true,
+      "decision_ok": true,
+      "chosen_type": "cube",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "tri_prism": 2.7562397167105523e-12,
+        "cylinder": 5.598732095910039e-06,
+        "rect_prism": 4.077629517786109e-12
+      },
+      "kind": "success",
+      "layout_subtype": "mixed_far",
+      "required_type": "cube",
+      "reachable_types": [
+        "cylinder",
+        "cube"
+      ],
+      "unreachable_types": [
+        "tri_prism",
+        "rect_prism"
+      ],
+      "standing_types": [
+        "tri_prism",
+        "cylinder",
+        "cube",
+        "rect_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [],
+      "objects": {
+        "tri_prism": {
+          "xy": [
+            0.5599502290001575,
+            0.3757481904832124
+          ],
+          "yaw": -0.021983656880927682,
+          "reachable": false,
+          "standing": true,
+          "present": true,
+          "slot": "far",
+          "rgb": [
+            0.8690590121987876,
+            0.7983946869293808,
+            0.7069235602727142
+          ],
+          "finish": "matte"
+        },
+        "cylinder": {
+          "xy": [
+            0.3568397939121288,
+            0.21196934425856592
+          ],
+          "yaw": 0.005949922300269528,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "close",
+          "rgb": [
+            0.9831033295687563,
+            0.4402575606903488,
+            0.41391666599514865
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "xy": [
+            0.3682243168515844,
+            0.09856266364981325
+          ],
+          "yaw": -0.04417697529107846,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "close",
+          "rgb": [
+            0.3094386725435889,
+            0.7490104273410868,
+            0.1692105605370794
+          ],
+          "finish": "smooth"
+        },
+        "rect_prism": {
+          "xy": [
+            0.3890303074020748,
+            -0.35668765696414023
+          ],
+          "yaw": -0.13781473143817644,
+          "reachable": false,
+          "standing": true,
+          "present": true,
+          "slot": "far",
+          "rgb": [
+            0.15971722089089005,
+            0.7203949047503365,
+            0.8938135070699065
+          ],
+          "finish": "matte"
+        }
+      },
+      "pad_xy": [
+        0.41940274549007933,
+        -0.08549753516953736
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.7459720364664384,
+            0.0055342897661100066
+          ]
+        }
+      ],
+      "table_texture": "png",
+      "table_rgb": [
+        0.3136792359608355,
+        0.6130617554669902,
+        0.39004120093324973
+      ],
+      "table_finish": "matte"
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_3",
+      "num_steps": 283,
+      "return": 7.84999942779541,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "descend_side": 1.2000000476837158,
+        "done": 0.0,
+        "grasp": 0.0,
+        "identify": 0.0,
+        "insert": 0.25,
+        "lift_check": 3.0,
+        "lower": -1.1499998569488525,
+        "move_above_target": 1.2999999523162842,
+        "receive": 1.0,
+        "release": 0.05000000074505806,
+        "squeeze": 0.0,
+        "understand": 0.0,
+        "withdraw": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Grasp the rectangular prism with the left hand and set it on the green target.",
+      "paraphrase_id": "rect_prism:success",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 28.239999999998666,
+      "controller_phase": "done",
+      "placed": true,
+      "decision_ok": true,
+      "chosen_type": "rect_prism",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "tri_prism": 2.66561565714137e-13,
+        "cylinder": 4.3419034869641954e-06,
+        "cube": 4.510401075305405e-12
+      },
+      "kind": "success",
+      "layout_subtype": "mixed_tipped",
+      "required_type": "rect_prism",
+      "reachable_types": [
+        "cylinder",
+        "rect_prism",
+        "tri_prism",
+        "cube"
+      ],
+      "unreachable_types": [],
+      "standing_types": [
+        "cylinder",
+        "rect_prism"
+      ],
+      "fallen_types": [
+        "tri_prism",
+        "cube"
+      ],
+      "missing_types": [],
+      "objects": {
+        "cylinder": {
+          "xy": [
+            0.39573537730897074,
+            0.11458303339993413
+          ],
+          "yaw": 0.08188208437079222,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.72843300350835,
+            0.31173447518038766,
+            0.9003240869087914
+          ],
+          "finish": "smooth"
+        },
+        "rect_prism": {
+          "xy": [
+            0.4039060421218364,
+            0.30391422705624915
+          ],
+          "yaw": -0.003235096007242838,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.28849090961637236,
+            0.6191026838387022,
+            0.9149539703697421
+          ],
+          "finish": "smooth"
+        },
+        "tri_prism": {
+          "xy": [
+            0.5739096502595319,
+            0.10943674833222225
+          ],
+          "yaw": -0.005773231175921559,
+          "reachable": true,
+          "standing": false,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.2932501500663946,
+            0.8277568720882065,
+            0.21934505849163421
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "xy": [
+            0.5834230156057879,
+            0.32062432246419653
+          ],
+          "yaw": -0.058014143981391146,
+          "reachable": true,
+          "standing": false,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.9492082796553193,
+            0.9425957745929776,
+            0.36175610271075187
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_xy": [
+        0.47116205788809173,
+        -0.09558890317609575
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.6620009038249597,
+        0.5903431627851062,
+        0.6684718682145354
+      ],
+      "table_finish": "smooth"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_0",
+      "num_steps": 39,
+      "return": -34.35000228881836,
+      "phase_returns": {
+        "abort_retract": -14.0,
+        "approach_side": -12.349998474121094,
+        "identify": -3.0,
+        "receive": -2.0,
+        "understand": -3.0
+      },
+      "episode_kind": "space_constraint",
+      "instruction": "Pick up the triangle block and place it on the green pad.",
+      "paraphrase_id": "tri_prism:space_constraint",
+      "is_success": false,
+      "failure_reason": "space_constraint",
+      "action_mode": "retract",
+      "fps": 10.0,
+      "sim_time": 3.84999999999994,
+      "controller_phase": "abort_retract",
+      "placed": true,
+      "decision_ok": true,
+      "chosen_type": "tri_prism",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "cylinder": 5.64066725067434e-06,
+        "cube": 4.329960270173997e-12,
+        "rect_prism": 0.0074846296536656256
+      },
+      "kind": "space_constraint",
+      "layout_subtype": "too_close",
+      "required_type": "tri_prism",
+      "reachable_types": [
+        "cube",
+        "tri_prism",
+        "cylinder",
+        "rect_prism"
+      ],
+      "unreachable_types": [],
+      "standing_types": [
+        "cube",
+        "tri_prism",
+        "cylinder",
+        "rect_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [],
+      "objects": {
+        "cube": {
+          "xy": [
+            0.4,
+            0.13699303909107002
+          ],
+          "yaw": 0.05598895419771632,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.7202271161452808,
+            0.5908359966346437,
+            0.3034537185082037
+          ],
+          "finish": "smooth"
+        },
+        "tri_prism": {
+          "xy": [
+            0.4,
+            0.18432264964346265
+          ],
+          "yaw": 0.07368623088344592,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.3085792246715859,
+            0.8820077520221651,
+            0.7810761245078703
+          ],
+          "finish": "smooth"
+        },
+        "cylinder": {
+          "xy": [
+            0.4,
+            0.230121491196209
+          ],
+          "yaw": -0.03679900284795183,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.30327135690124657,
+            0.24411326020975926,
+            0.9446531219977035
+          ],
+          "finish": "smooth"
+        },
+        "rect_prism": {
+          "xy": [
+            0.4,
+            0.27194609347732235
+          ],
+          "yaw": 0.0016128393512579997,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.8811608973222258,
+            0.8681587480940386,
+            0.9185319087442173
+          ],
+          "finish": "matte"
+        }
+      },
+      "pad_xy": [
+        0.42000000000000004,
+        0.16432264964346266
+      ],
+      "pad_subtype": "jammed",
+      "pad_reachable": false,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.5317062368369949,
+        0.718283041737147,
+        0.44383710597784465
+      ],
+      "table_finish": "matte"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_1",
+      "num_steps": 35,
+      "return": 1.0,
+      "phase_returns": {
+        "hold": 1.0,
+        "identify": 0.0,
+        "receive": 0.0,
+        "understand": 0.0
+      },
+      "episode_kind": "kinematics_limit",
+      "instruction": "Pick up the rectangular prism and place it on the green pad (unavailable due to posture).",
+      "paraphrase_id": "rect_prism:kinematics_limit",
+      "is_success": false,
+      "failure_reason": "kinematics_limit",
+      "action_mode": "hold_zero",
+      "fps": 10.0,
+      "sim_time": 3.4049999999999496,
+      "controller_phase": "hold",
+      "placed": false,
+      "decision_ok": true,
+      "chosen_type": "rect_prism",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "tri_prism": 4.143034873243133e-12,
+        "cylinder": 1.3000472139043056e-06,
+        "cube": 2.5530829123808116e-12
+      },
+      "kind": "kinematics_limit",
+      "layout_subtype": "mixed_far",
+      "required_type": "rect_prism",
+      "reachable_types": [
+        "cube",
+        "cylinder"
+      ],
+      "unreachable_types": [
+        "rect_prism",
+        "tri_prism"
+      ],
+      "standing_types": [
+        "cube",
+        "cylinder",
+        "rect_prism",
+        "tri_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [],
+      "objects": {
+        "cube": {
+          "xy": [
+            0.37762635215586043,
+            0.09635108141225965
+          ],
+          "yaw": -0.10685241831872297,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "close",
+          "rgb": [
+            0.7497193455856817,
+            0.21115121673457357,
+            0.5773848188829924
+          ],
+          "finish": "matte"
+        },
+        "cylinder": {
+          "xy": [
+            0.4085689548724355,
+            0.15780872812119662
+          ],
+          "yaw": 0.07466995334654594,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "close",
+          "rgb": [
+            0.6045473135213855,
+            0.6527670383031267,
+            0.7509965354408238
+          ],
+          "finish": "matte"
+        },
+        "rect_prism": {
+          "xy": [
+            0.5549446897449337,
+            0.3650985372612974
+          ],
+          "yaw": 0.05061843892861645,
+          "reachable": false,
+          "standing": true,
+          "present": true,
+          "slot": "far",
+          "rgb": [
+            0.2178071737792111,
+            0.9386705098430348,
+            0.7387388799183805
+          ],
+          "finish": "matte"
+        },
+        "tri_prism": {
+          "xy": [
+            0.38833997933146835,
+            -0.35076311618486894
+          ],
+          "yaw": -0.021188792011571256,
+          "reachable": false,
+          "standing": true,
+          "present": true,
+          "slot": "far",
+          "rgb": [
+            0.9020078893675443,
+            0.8398204165144378,
+            0.3665187165216866
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_xy": [
+        0.47499557499262146,
+        -0.1636057346792174
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [],
+      "table_texture": "checker",
+      "table_rgb": [
+        0.5340961571463133,
+        0.6999728967194743,
+        0.4739291809943717
+      ],
+      "table_finish": "matte"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_2",
+      "num_steps": 52,
+      "return": -22.25,
+      "phase_returns": {
+        "abort_retract": -1.0,
+        "approach_side": 1.75,
+        "grasp": -23.0,
+        "identify": 0.0,
+        "receive": 0.0,
+        "understand": 0.0
+      },
+      "episode_kind": "tipped",
+      "instruction": "Place the triangular prism on the green pad (object is lying on the table).",
+      "paraphrase_id": "tri_prism:tipped",
+      "is_success": false,
+      "failure_reason": "tipped",
+      "action_mode": "tipped_try",
+      "fps": 10.0,
+      "sim_time": 5.114999999999913,
+      "controller_phase": "abort_retract",
+      "placed": false,
+      "decision_ok": true,
+      "chosen_type": "tri_prism",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "cylinder": 0.0001873326207151176,
+        "cube": 0.0001182613296130138,
+        "rect_prism": 0.0
+      },
+      "kind": "tipped",
+      "layout_subtype": "mixed_tipped",
+      "required_type": "tri_prism",
+      "reachable_types": [
+        "cube",
+        "rect_prism",
+        "tri_prism",
+        "cylinder"
+      ],
+      "unreachable_types": [],
+      "standing_types": [
+        "cube",
+        "rect_prism"
+      ],
+      "fallen_types": [
+        "tri_prism",
+        "cylinder"
+      ],
+      "missing_types": [],
+      "objects": {
+        "cube": {
+          "xy": [
+            0.39491354985418176,
+            0.1245081717428115
+          ],
+          "yaw": 0.0024213617963288747,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.40297749414117334,
+            0.4513648414405461,
+            0.8417401073432591
+          ],
+          "finish": "matte"
+        },
+        "rect_prism": {
+          "xy": [
+            0.3995179558659914,
+            0.292984202920986
+          ],
+          "yaw": -0.08317090407248467,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.28855242552963406,
+            0.8311887317037217,
+            0.7226557106683292
+          ],
+          "finish": "smooth"
+        },
+        "tri_prism": {
+          "xy": [
+            0.5717489023493937,
+            0.10474335002278842
+          ],
+          "yaw": -0.06584222105316527,
+          "reachable": true,
+          "standing": false,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.7356640666959074,
+            0.5709344244012972,
+            0.766760001631655
+          ],
+          "finish": "matte"
+        },
+        "cylinder": {
+          "xy": [
+            0.5872082466975784,
+            0.32780724156567026
+          ],
+          "yaw": -0.011154266634975582,
+          "reachable": true,
+          "standing": false,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.7551736882876889,
+            0.2436851264412743,
+            0.9419080958724928
+          ],
+          "finish": "matte"
+        }
+      },
+      "pad_xy": [
+        0.4650197418835269,
+        -0.15257930430466757
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.7075593074448415,
+        0.6257698438041956,
+        0.38686558511669816
+      ],
+      "table_finish": "smooth"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_3",
+      "num_steps": 20,
+      "return": 1.25,
+      "phase_returns": {
+        "abort_retract": 1.0,
+        "approach_side": 0.25
+      },
+      "episode_kind": "wrong_object",
+      "instruction": "Place the tri prism on the green pad (the requested object is not on the table).",
+      "paraphrase_id": "tri_prism:wrong_object",
+      "is_success": false,
+      "failure_reason": "wrong_object",
+      "action_mode": "retract",
+      "fps": 10.0,
+      "sim_time": 1.9749999999999799,
+      "controller_phase": "abort_retract",
+      "placed": false,
+      "decision_ok": false,
+      "chosen_type": null,
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "cylinder": 4.56960954358182e-06,
+        "cube": 0.0,
+        "rect_prism": 2.307798786747505e-12
+      },
+      "kind": "wrong_object",
+      "layout_subtype": "working_row",
+      "required_type": "tri_prism",
+      "reachable_types": [
+        "cylinder",
+        "cube",
+        "rect_prism"
+      ],
+      "unreachable_types": [
+        "tri_prism"
+      ],
+      "standing_types": [
+        "cylinder",
+        "cube",
+        "rect_prism",
+        "tri_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [
+        "tri_prism"
+      ],
+      "objects": {
+        "cylinder": {
+          "xy": [
+            0.3928984303025269,
+            0.08909471622819617
+          ],
+          "yaw": -0.08406354007358506,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.8367547418396093,
+            0.8571689692680714,
+            0.813913024928759
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "xy": [
+            0.3861924622664185,
+            0.16477650224382157
+          ],
+          "yaw": 0.12576572319986606,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.24789403727640538,
+            0.24954287858747948,
+            0.7813620048285898
+          ],
+          "finish": "smooth"
+        },
+        "rect_prism": {
+          "xy": [
+            0.4196673887333555,
+            0.2570290863264672
+          ],
+          "yaw": -0.1641227111134454,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.8394976900526432,
+            0.4660103439980695,
+            0.78201225438464
+          ],
+          "finish": "matte"
+        },
+        "tri_prism": {
+          "xy": [
+            1.7,
+            0.62
+          ],
+          "yaw": 0.16501836298146189,
+          "reachable": false,
+          "standing": true,
+          "present": false,
+          "slot": "near",
+          "rgb": [
+            0.30906064029246305,
+            0.8936092109815911,
+            0.868476011222543
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_xy": [
+        0.4774652235265004,
+        -0.16031368852394734
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.6869776166134298,
+            -0.11106058394215176
+          ]
+        }
+      ],
+      "table_texture": "png",
+      "table_rgb": [
+        0.7413819725970827,
+        0.46436356874240264,
+        0.668598174451773
+      ],
+      "table_finish": "matte"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_4",
+      "num_steps": 339,
+      "return": -286.9999694824219,
+      "phase_returns": {
+        "approach_side": -6.800000190734863,
+        "descend_side": -21.650001525878906,
+        "done": -4.0,
+        "grasp": -8.0,
+        "identify": 0.0,
+        "insert": -28.600000381469727,
+        "lift_check": -53.0,
+        "lower": -79.05000305175781,
+        "move_above_target": -27.85000228881836,
+        "receive": 1.0,
+        "recover": -15.0,
+        "release": -14.050000190734863,
+        "squeeze": -16.0,
+        "understand": 0.0,
+        "verify_place": -14.0
+      },
+      "episode_kind": "neighbor_collision",
+      "instruction": "Take the triangle block and put it onto the green square.",
+      "paraphrase_id": "tri_prism:neighbor_collision",
+      "is_success": false,
+      "failure_reason": "knock",
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 33.85999999999887,
+      "controller_phase": "done",
+      "placed": true,
+      "decision_ok": true,
+      "chosen_type": "tri_prism",
+      "neighbors_ok": false,
+      "neighbor_deltas": {
+        "cylinder": 0.09552366374434602,
+        "cube": 0.11416561501863563,
+        "rect_prism": 0.10933877035790038
+      },
+      "kind": "neighbor_collision",
+      "layout_subtype": "too_close",
+      "required_type": "tri_prism",
+      "reachable_types": [
+        "cylinder",
+        "cube",
+        "tri_prism",
+        "rect_prism"
+      ],
+      "unreachable_types": [],
+      "standing_types": [
+        "cylinder",
+        "cube",
+        "tri_prism",
+        "rect_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [],
+      "objects": {
+        "cylinder": {
+          "xy": [
+            0.4,
+            0.13726333047794287
+          ],
+          "yaw": -0.09691736477576761,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.9025909725827534,
+            0.7895521817507345,
+            0.49490628496367783
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "xy": [
+            0.4,
+            0.1803257234981461
+          ],
+          "yaw": 0.01282641200357204,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.4418857798938003,
+            0.21682993679170542,
+            0.9149814762146429
+          ],
+          "finish": "matte"
+        },
+        "tri_prism": {
+          "xy": [
+            0.4,
+            0.22680336086545683
+          ],
+          "yaw": -0.06174664688239065,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.8939260189309426,
+            0.3416071643778091,
+            0.8126926977115763
+          ],
+          "finish": "smooth"
+        },
+        "rect_prism": {
+          "xy": [
+            0.4,
+            0.2777297870566111
+          ],
+          "yaw": 0.05333213647604687,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.7980543392637426,
+            0.21031099095547814,
+            0.45358921336172564
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_xy": [
+        0.4549079939076767,
+        -0.15065917430997164
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.3535143262839948,
+        0.5550547549419877,
+        0.2570295425744559
+      ],
+      "table_finish": "matte"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_5",
+      "num_steps": 37,
+      "return": 3.549999952316284,
+      "phase_returns": {
+        "abort_retract": 1.0,
+        "approach_side": 1.5499998331069946,
+        "identify": 0.0,
+        "receive": 1.0,
+        "understand": 0.0
+      },
+      "episode_kind": "space_constraint",
+      "instruction": "Grasp the round column with the left hand and set it on the green target.",
+      "paraphrase_id": "cylinder:space_constraint",
+      "is_success": false,
+      "failure_reason": "space_constraint",
+      "action_mode": "retract",
+      "fps": 10.0,
+      "sim_time": 3.6899999999999435,
+      "controller_phase": "abort_retract",
+      "placed": false,
+      "decision_ok": true,
+      "chosen_type": "cylinder",
+      "neighbors_ok": true,
+      "neighbor_deltas": {
+        "tri_prism": 4.872035941780445e-12,
+        "cube": 2.3049917272254778e-12,
+        "rect_prism": 3.0967644884428865e-12
+      },
+      "kind": "space_constraint",
+      "layout_subtype": "blocked_approach",
+      "required_type": "cylinder",
+      "reachable_types": [
+        "cube",
+        "tri_prism",
+        "cylinder",
+        "rect_prism"
+      ],
+      "unreachable_types": [],
+      "standing_types": [
+        "cube",
+        "tri_prism",
+        "cylinder",
+        "rect_prism"
+      ],
+      "fallen_types": [],
+      "missing_types": [],
+      "objects": {
+        "cube": {
+          "xy": [
+            0.40722250439078395,
+            0.0946932682852133
+          ],
+          "yaw": -0.16817937559450616,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.45195532052441,
+            0.9046848679414043,
+            0.7174957564099232
+          ],
+          "finish": "smooth"
+        },
+        "tri_prism": {
+          "xy": [
+            0.408249412534455,
+            0.15540172037291572
+          ],
+          "yaw": -0.15764443663385813,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.7639087338524401,
+            0.700057000482203,
+            0.8352573527551823
+          ],
+          "finish": "smooth"
+        },
+        "cylinder": {
+          "xy": [
+            0.4072304329674411,
+            0.23987330328125067
+          ],
+          "yaw": 0.14214046410484554,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.9658524789736903,
+            0.5475478564929439,
+            0.29982455064722546
+          ],
+          "finish": "smooth"
+        },
+        "rect_prism": {
+          "xy": [
+            0.4107046842625497,
+            0.3238147039316387
+          ],
+          "yaw": -0.05726489881554625,
+          "reachable": true,
+          "standing": true,
+          "present": true,
+          "slot": "near",
+          "rgb": [
+            0.591023184617022,
+            0.2890309749819928,
+            0.787255035471768
+          ],
+          "finish": "matte"
+        }
+      },
+      "pad_xy": [
+        0.4503502805733414,
+        -0.11733374286623754
+      ],
+      "pad_subtype": "working",
+      "pad_reachable": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.3372304329674411,
+            0.23987330328125067
+          ]
+        }
+      ],
+      "table_texture": "png",
+      "table_rgb": [
+        0.6547598235349601,
+        0.7037494616880671,
+        0.6263237598591832
+      ],
+      "table_finish": "matte"
+    }
+  ]
+}

@@ -36,6 +36,8 @@ def compute_action(controller, act_ids, act_qadr):
 
 def hand_hits_cube(controller):
     cube = controller.cube_geom_id
+    if cube is None:
+        return False
     hand = controller.thumb_geoms | controller.finger_geoms
     for i in range(controller.data.ncon):
         pair = {
@@ -45,6 +47,25 @@ def hand_hits_cube(controller):
         if cube in pair and pair & hand:
             return True
     return False
+
+
+def mat_to_axis_angle(mat):
+    """Convert a 3x3 rotation matrix to an axis-angle vector."""
+    rot = np.asarray(mat, dtype=float).reshape(3, 3)
+    cos = float(np.clip((np.trace(rot) - 1.0) * 0.5, -1.0, 1.0))
+    angle = float(np.arccos(cos))
+    if angle < 1e-8:
+        return np.zeros(3, dtype=np.float32)
+    axis = np.array(
+        [
+            rot[2, 1] - rot[1, 2],
+            rot[0, 2] - rot[2, 0],
+            rot[1, 0] - rot[0, 1],
+        ],
+        dtype=float,
+    )
+    axis = axis / (2.0 * np.sin(angle) + 1e-12)
+    return (axis * angle).astype(np.float32)
 
 
 def fingers_closing(controller):
@@ -58,8 +79,10 @@ def fingers_closing(controller):
 
 
 class EpisodeRecorder:
-    def __init__(self, model):
+    def __init__(self, model, reward_terms=None, task_id=None):
         self.model = model
+        self.term_names = tuple(reward_terms) if reward_terms is not None else REWARD_TERMS
+        self.task_id = task_id if task_id is not None else TASK_ID
         self.renderer = mujoco.Renderer(model, IMAGE_SIZE, IMAGE_SIZE)
         self.cam_scene = model.camera("cam_scene").id
         self.cam_ego = model.camera("cam_ego").id
@@ -71,6 +94,8 @@ class EpisodeRecorder:
         self.qpos = []
         self.qvel = []
         self.ee_pos = []
+        self.ee_ori = []
+        self.full_qpos = []
         self.actions = []
         self.phases = []
         self.rewards = []
@@ -95,10 +120,14 @@ class EpisodeRecorder:
         self.qpos.append(data.qpos[controller.qadr].copy())
         self.qvel.append(data.qvel[controller.vadr].copy())
         self.ee_pos.append(data.site_xpos[controller.site_id].copy())
+        self.ee_ori.append(
+            mat_to_axis_angle(data.site_xmat[controller.site_id])
+        )
+        self.full_qpos.append(data.qpos.copy())
         self.actions.append(np.asarray(action, np.float32))
         self.phases.append(phase)
         self.rewards.append(float(reward))
-        self.reward_terms.append([float(terms[name]) for name in REWARD_TERMS])
+        self.reward_terms.append([float(terms[name]) for name in self.term_names])
         self.events.append(list(events))
         return True
 
@@ -119,8 +148,8 @@ class EpisodeRecorder:
             mask = phases == phase
             phase_returns[phase] = float(rewards[mask].sum()) if mask.any() else 0.0
 
-        event_mask = np.zeros((len(self.events), len(REWARD_TERMS)), dtype=np.uint8)
-        name_to_i = {n: i for i, n in enumerate(REWARD_TERMS)}
+        event_mask = np.zeros((len(self.events), len(self.term_names)), dtype=np.uint8)
+        name_to_i = {n: i for i, n in enumerate(self.term_names)}
         for t, evs in enumerate(self.events):
             for name in evs:
                 if name in name_to_i:
@@ -150,13 +179,13 @@ class EpisodeRecorder:
             handle.create_dataset("reward", data=rewards)
             handle.create_dataset("reward_terms", data=terms)
             handle.create_dataset("events", data=event_mask)
-            handle.attrs["reward_term_names"] = [n.encode() for n in REWARD_TERMS]
+            handle.attrs["reward_term_names"] = [n.encode() for n in self.term_names]
             handle.attrs["action_joints"] = [n.encode() for n in ACTION_JOINTS]
-            handle.attrs["task_id"] = TASK_ID
+            handle.attrs["task_id"] = self.task_id
             handle.attrs["episode_id"] = episode_id
 
         payload = {
-            "task_id": TASK_ID,
+            "task_id": self.task_id,
             "episode_id": episode_id,
             "num_steps": self.num_steps,
             "return": float(rewards.sum()) if self.num_steps else 0.0,

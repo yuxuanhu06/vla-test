@@ -1,0 +1,580 @@
+{
+  "task_id": "task1",
+  "language_instruction": "Pick up the red block and place it on the green pad.",
+  "hdf5": "libero_style.hdf5",
+  "num_success": 5,
+  "num_fail": 5,
+  "demos": [
+    {
+      "group": "data",
+      "demo_id": "demo_0",
+      "num_steps": 169,
+      "return": 7.899999618530273,
+      "phase_returns": {
+        "descend_side": 1.1500000953674316,
+        "done": 0.0,
+        "grasp": 0.0,
+        "insert": 0.25,
+        "lift_check": 2.0,
+        "lower": 1.0,
+        "move_above_target": 1.4499999284744263,
+        "open": 1.0,
+        "release": 0.05000000074505806,
+        "rise": 0.0,
+        "squeeze": 0.0,
+        "verify_place": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Place the red object on the green pad.",
+      "paraphrase_id": 4,
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 16.835000000000935,
+      "controller_phase": "done",
+      "placed": true,
+      "kind": "success",
+      "layout_subtype": "working_band",
+      "cube_xy": [
+        0.33111371391832833,
+        0.2308077204017929
+      ],
+      "pad_xy": [
+        0.3277190672155265,
+        0.08202834579805807
+      ],
+      "cube_yaw": -0.1119227624750593,
+      "tipped": false,
+      "distractors": [
+        {
+          "name": "junk_0",
+          "xy": [
+            0.5544580501341494,
+            -0.0742493923504633
+          ]
+        },
+        {
+          "name": "junk_1",
+          "xy": [
+            0.69347708024376,
+            0.060213054786874914
+          ]
+        },
+        {
+          "name": "junk_2",
+          "xy": [
+            0.5658708472101768,
+            -0.04854105078107174
+          ]
+        }
+      ],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.36582937101109625,
+        0.9439810717600817,
+        0.16322210842282328
+      ],
+      "table_rgb": [
+        0.4836496766719489,
+        0.551223108541199,
+        0.4489937453059826
+      ]
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_1",
+      "num_steps": 164,
+      "return": 7.999999523162842,
+      "phase_returns": {
+        "descend_side": 1.1500000953674316,
+        "done": 0.0,
+        "grasp": 0.0,
+        "insert": 0.25,
+        "lift_check": 2.0,
+        "lower": 1.0,
+        "move_above_target": 1.5499998331069946,
+        "open": 1.0,
+        "release": 0.05000000074505806,
+        "rise": 0.0,
+        "squeeze": 0.0,
+        "verify_place": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Pick the block up and deliver it to the green region.",
+      "paraphrase_id": 5,
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 16.375000000001027,
+      "controller_phase": "done",
+      "placed": true,
+      "kind": "success",
+      "layout_subtype": "working_band",
+      "cube_xy": [
+        0.376367239495259,
+        0.25999166509501176
+      ],
+      "pad_xy": [
+        0.304018289987926,
+        0.08961707616123023
+      ],
+      "cube_yaw": 0.16193580940774172,
+      "tipped": false,
+      "distractors": [
+        {
+          "name": "junk_0",
+          "xy": [
+            0.7077464819850636,
+            -0.08198645820727118
+          ]
+        }
+      ],
+      "cube_finish": "matte",
+      "cube_rgb": [
+        0.4632952004225289,
+        0.8869561434058127,
+        0.33172607482670374
+      ],
+      "table_rgb": [
+        0.19620843897031165,
+        0.6079542812093687,
+        0.5829040691187758
+      ]
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_2",
+      "num_steps": 172,
+      "return": 7.84999942779541,
+      "phase_returns": {
+        "descend_side": 1.1500000953674316,
+        "done": 0.0,
+        "grasp": 0.0,
+        "insert": 0.25,
+        "lift_check": 2.0,
+        "lower": 1.0,
+        "move_above_target": 1.399999976158142,
+        "open": 1.0,
+        "release": 0.05000000074505806,
+        "rise": 0.0,
+        "squeeze": 0.0,
+        "verify_place": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Pick up the object and move it to the green target.",
+      "paraphrase_id": 1,
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 17.11000000000088,
+      "controller_phase": "done",
+      "placed": true,
+      "kind": "success",
+      "layout_subtype": "working_band",
+      "cube_xy": [
+        0.35753758182613926,
+        0.22127933836188576
+      ],
+      "pad_xy": [
+        0.33063608018851426,
+        0.08102069786096625
+      ],
+      "cube_yaw": -0.0978229253652399,
+      "tipped": false,
+      "distractors": [
+        {
+          "name": "junk_0",
+          "xy": [
+            0.7029850129912815,
+            -0.20017525098277758
+          ]
+        },
+        {
+          "name": "junk_1",
+          "xy": [
+            0.6819161471069719,
+            -0.19999299736986959
+          ]
+        }
+      ],
+      "cube_finish": "matte",
+      "cube_rgb": [
+        0.5734497281574162,
+        0.778628560571046,
+        0.9203450715366188
+      ],
+      "table_rgb": [
+        0.662632827637358,
+        0.21321294830449783,
+        0.5509583143919701
+      ]
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_3",
+      "num_steps": 170,
+      "return": 6.949999809265137,
+      "phase_returns": {
+        "descend_side": 1.1500000953674316,
+        "done": 0.0,
+        "grasp": 0.0,
+        "insert": 0.25,
+        "lift_check": 2.0,
+        "lower": 0.8999999761581421,
+        "move_above_target": 0.6000000834465027,
+        "open": 1.0,
+        "release": 0.05000000074505806,
+        "rise": 0.0,
+        "squeeze": 0.0,
+        "verify_place": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Pick the block up and deliver it to the green region.",
+      "paraphrase_id": 5,
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 16.980000000000906,
+      "controller_phase": "done",
+      "placed": true,
+      "kind": "success",
+      "layout_subtype": "working_band",
+      "cube_xy": [
+        0.3062904029732512,
+        0.2722091661069311
+      ],
+      "pad_xy": [
+        0.2919079278879646,
+        0.0962121656527829
+      ],
+      "cube_yaw": -0.044124258698565955,
+      "tipped": false,
+      "distractors": [
+        {
+          "name": "junk_0",
+          "xy": [
+            0.5104361045426995,
+            0.03943348862023224
+          ]
+        },
+        {
+          "name": "junk_1",
+          "xy": [
+            0.49427139638408124,
+            -0.10576884750673318
+          ]
+        }
+      ],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.5997854737827656,
+        0.9664354961977539,
+        0.34334057127547596
+      ],
+      "table_rgb": [
+        0.2742281856295284,
+        0.2185050882094059,
+        0.30858191635416765
+      ]
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_4",
+      "num_steps": 169,
+      "return": 7.899999618530273,
+      "phase_returns": {
+        "descend_side": 1.1500000953674316,
+        "done": 0.0,
+        "grasp": 0.0,
+        "insert": 0.25,
+        "lift_check": 2.0,
+        "lower": 1.0,
+        "move_above_target": 1.4499999284744263,
+        "open": 1.0,
+        "release": 0.05000000074505806,
+        "rise": 0.0,
+        "squeeze": 0.0,
+        "verify_place": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Pick the block up and deliver it to the green region.",
+      "paraphrase_id": 5,
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 16.830000000000936,
+      "controller_phase": "done",
+      "placed": true,
+      "kind": "success",
+      "layout_subtype": "working_band",
+      "cube_xy": [
+        0.34630068026588023,
+        0.2357787957836695
+      ],
+      "pad_xy": [
+        0.33465094014508545,
+        0.07910768289034079
+      ],
+      "cube_yaw": 0.1969992625353787,
+      "tipped": false,
+      "distractors": [
+        {
+          "name": "junk_0",
+          "xy": [
+            0.5239063979221725,
+            0.06890574203728014
+          ]
+        },
+        {
+          "name": "junk_1",
+          "xy": [
+            0.6722200887860661,
+            -0.07562185102741942
+          ]
+        }
+      ],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.9199384744995047,
+        0.9232292437847944,
+        0.5499782589268948
+      ],
+      "table_rgb": [
+        0.24747470726106233,
+        0.3634367024814855,
+        0.18459252415023422
+      ]
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_0",
+      "num_steps": 20,
+      "return": 2.0999999046325684,
+      "phase_returns": {
+        "abort_retract": 1.0,
+        "approach_side": 1.0999999046325684
+      },
+      "episode_kind": "space_constraint",
+      "instruction": "Take the cube and put it onto the green target.",
+      "paraphrase_id": 3,
+      "is_success": false,
+      "failure_reason": "space_constraint",
+      "action_mode": "retract",
+      "fps": 10.0,
+      "sim_time": 1.9299999999999808,
+      "controller_phase": "abort_retract",
+      "placed": false,
+      "kind": "space_constraint",
+      "layout_subtype": "blocked_approach",
+      "cube_xy": [
+        0.3537516224947491,
+        0.2569642594177605
+      ],
+      "pad_xy": [
+        0.31,
+        0.08
+      ],
+      "cube_yaw": 0.2511644204439854,
+      "tipped": false,
+      "distractors": [
+        {
+          "name": "junk_0",
+          "xy": [
+            0.2837516224947491,
+            0.2569642594177605
+          ]
+        }
+      ],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.9504964611875202,
+        0.8809526101659111,
+        0.2022163331290331
+      ],
+      "table_rgb": [
+        0.32905008885538745,
+        0.6967147241654913,
+        0.579654776142008
+      ]
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_1",
+      "num_steps": 20,
+      "return": 2.0999999046325684,
+      "phase_returns": {
+        "abort_retract": 1.0,
+        "approach_side": 1.0999999046325684
+      },
+      "episode_kind": "space_constraint",
+      "instruction": "Pick up the object and move it to the green target.",
+      "paraphrase_id": 1,
+      "is_success": false,
+      "failure_reason": "space_constraint",
+      "action_mode": "retract",
+      "fps": 10.0,
+      "sim_time": 1.9299999999999808,
+      "controller_phase": "abort_retract",
+      "placed": false,
+      "kind": "space_constraint",
+      "layout_subtype": "pad_jammed",
+      "cube_xy": [
+        0.33566699197815614,
+        0.27012199959462707
+      ],
+      "pad_xy": [
+        0.3656669919781561,
+        0.25012199959462705
+      ],
+      "cube_yaw": -0.031819656870791524,
+      "tipped": false,
+      "distractors": [],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.7527572308671241,
+        0.8810701341385303,
+        0.9591358723291254
+      ],
+      "table_rgb": [
+        0.53586271133403,
+        0.3116583407860066,
+        0.5722087484909104
+      ]
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_2",
+      "num_steps": 20,
+      "return": 2.1500000953674316,
+      "phase_returns": {
+        "abort_retract": 1.0,
+        "approach_side": 1.1499998569488525
+      },
+      "episode_kind": "space_constraint",
+      "instruction": "Take the cube and put it onto the green target.",
+      "paraphrase_id": 3,
+      "is_success": false,
+      "failure_reason": "space_constraint",
+      "action_mode": "retract",
+      "fps": 10.0,
+      "sim_time": 1.9299999999999808,
+      "controller_phase": "abort_retract",
+      "placed": false,
+      "kind": "space_constraint",
+      "layout_subtype": "pad_jammed",
+      "cube_xy": [
+        0.3229486573049815,
+        0.24985623876203902
+      ],
+      "pad_xy": [
+        0.3529486573049815,
+        0.22985623876203903
+      ],
+      "cube_yaw": 0.038944254915468546,
+      "tipped": false,
+      "distractors": [],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.2518867775373368,
+        0.7308988087471843,
+        0.7571852681212055
+      ],
+      "table_rgb": [
+        0.4604270516163267,
+        0.41647441829043763,
+        0.6443530708866664
+      ]
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_3",
+      "num_steps": 26,
+      "return": 0.0,
+      "phase_returns": {
+        "hold": 0.0
+      },
+      "episode_kind": "kinematics_limit",
+      "instruction": "Pick up the object (unavailable due to posture).",
+      "paraphrase_id": 1,
+      "is_success": false,
+      "failure_reason": "kinematics_limit",
+      "action_mode": "hold_zero",
+      "fps": 10.0,
+      "sim_time": 2.504999999999969,
+      "controller_phase": "hold",
+      "placed": false,
+      "kind": "kinematics_limit",
+      "layout_subtype": "far_y",
+      "cube_xy": [
+        0.3040617561872745,
+        -0.36
+      ],
+      "pad_xy": [
+        0.31,
+        -0.3
+      ],
+      "cube_yaw": -0.19224821997676794,
+      "tipped": false,
+      "distractors": [],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.888996285900145,
+        0.908864531831037,
+        0.6219684741196245
+      ],
+      "table_rgb": [
+        0.22509887786548735,
+        0.3219276059056442,
+        0.5437548158090219
+      ]
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_4",
+      "num_steps": 26,
+      "return": 0.0,
+      "phase_returns": {
+        "hold": 0.0
+      },
+      "episode_kind": "kinematics_limit",
+      "instruction": "Pick up the object (unavailable due to posture).",
+      "paraphrase_id": 1,
+      "is_success": false,
+      "failure_reason": "kinematics_limit",
+      "action_mode": "hold_zero",
+      "fps": 10.0,
+      "sim_time": 2.504999999999969,
+      "controller_phase": "hold",
+      "placed": false,
+      "kind": "kinematics_limit",
+      "layout_subtype": "far_y",
+      "cube_xy": [
+        0.3983334706553422,
+        0.36
+      ],
+      "pad_xy": [
+        0.31,
+        0.3
+      ],
+      "cube_yaw": 0.21177289575316205,
+      "tipped": false,
+      "distractors": [],
+      "cube_finish": "matte",
+      "cube_rgb": [
+        0.8316418659702202,
+        0.807709727251552,
+        0.840035055953279
+      ],
+      "table_rgb": [
+        0.6032009942074555,
+        0.5243774790636168,
+        0.6103190550359889
+      ]
+    }
+  ]
+}

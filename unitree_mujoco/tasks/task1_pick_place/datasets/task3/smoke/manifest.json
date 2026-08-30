@@ -1,0 +1,893 @@
+{
+  "task_id": "task3",
+  "language_instruction": "Pick up the stick, push the cube onto the green pad, and plant the stick on the cube.",
+  "hdf5": "plant_stick_on_cube_task3.hdf5",
+  "num_success": 5,
+  "num_fail": 5,
+  "demos": [
+    {
+      "group": "data",
+      "demo_id": "demo_0",
+      "num_steps": 397,
+      "return": 11.999999046325684,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "center": 0.0,
+        "descend_side": 0.800000011920929,
+        "done": 0.0,
+        "grasp": 1.0,
+        "insert": 0.15000000596046448,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "push": 4.84999942779541,
+        "release": 0.0,
+        "reorient": 0.0,
+        "retreat": 0.0,
+        "rotate": 1.0,
+        "seat": 1.0,
+        "squeeze": 0.0,
+        "withdraw": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Grasp the wooden stick, slide the square block onto the green square, then stand the stick on it.",
+      "paraphrase_id": "success:wooden stick:square block",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 39.68500000000185,
+      "controller_phase": "done",
+      "placed": true,
+      "stick_planted": true,
+      "succeeded_flag": true,
+      "kind": "success",
+      "layout_subtype": "standard",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.1,
+      "cube_half": 0.04,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.5684808436607272,
+        0.38489335688193516,
+        0.27048676196809734
+      ],
+      "table_finish": "matte",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.7335972487871987,
+            0.5848999931723382,
+            0.9447560662364596
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "rgb": [
+            0.958953676704966,
+            0.7337243571439552,
+            0.2905244964820472
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.7899135671612154,
+        0.10567180529941461
+      ],
+      "visual_mode": "standard"
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_1",
+      "num_steps": 397,
+      "return": 11.999999046325684,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "center": 0.0,
+        "descend_side": 0.800000011920929,
+        "done": 0.0,
+        "grasp": 1.0,
+        "insert": 0.15000000596046448,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "push": 4.84999942779541,
+        "release": 0.0,
+        "reorient": 0.0,
+        "retreat": 0.0,
+        "rotate": 1.0,
+        "seat": 1.0,
+        "squeeze": 0.0,
+        "withdraw": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Use the stick to push the block onto the green pad and leave the stick standing on the cube.",
+      "paraphrase_id": "success:stick:block",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 39.68500000000185,
+      "controller_phase": "done",
+      "placed": true,
+      "stick_planted": true,
+      "succeeded_flag": true,
+      "kind": "success",
+      "layout_subtype": "lightness",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.1,
+      "cube_half": 0.04,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.6946948748541332,
+            0.031788638266966845
+          ]
+        }
+      ],
+      "table_texture": "checker",
+      "table_rgb": [
+        0.59422336528547,
+        0.4444607119895519,
+        0.3175482525112056
+      ],
+      "table_finish": "smooth",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.8615902674792002,
+            0.8972348127649997,
+            0.8714589492189283
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "rgb": [
+            0.9670823056014377,
+            0.42032898040570654,
+            0.4632952004225289
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.7252046030747155,
+        0.20816103691334945
+      ],
+      "visual_mode": "lightness"
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_2",
+      "num_steps": 397,
+      "return": 11.999999046325684,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "center": 0.0,
+        "descend_side": 0.800000011920929,
+        "done": 0.0,
+        "grasp": 1.0,
+        "insert": 0.15000000596046448,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "push": 4.84999942779541,
+        "release": 0.0,
+        "reorient": 0.0,
+        "retreat": 0.0,
+        "rotate": 1.0,
+        "seat": 1.0,
+        "squeeze": 0.0,
+        "withdraw": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Pick up the stick, push the square block onto the green pad, and plant the stick on the cube.",
+      "paraphrase_id": "success:stick:square block",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 39.68500000000185,
+      "controller_phase": "done",
+      "placed": true,
+      "stick_planted": true,
+      "succeeded_flag": true,
+      "kind": "success",
+      "layout_subtype": "texture",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.1,
+      "cube_half": 0.04,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.7154205477501503,
+            -0.19600206761910702
+          ]
+        }
+      ],
+      "table_texture": "checker",
+      "table_rgb": [
+        0.7272952468453686,
+        0.4999479068438235,
+        0.46261431242453777
+      ],
+      "table_finish": "smooth",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.9357357102141423,
+            0.5479381563900951,
+            0.5734497281574162
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "rgb": [
+            0.7189143023917999,
+            0.9187045351228929,
+            0.24194610662472416
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.990377856977394,
+        0.003676576241342322
+      ],
+      "visual_mode": "texture"
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_3",
+      "num_steps": 429,
+      "return": 11.59999942779541,
+      "phase_returns": {
+        "approach_side": 1.249999761581421,
+        "center": 0.0,
+        "descend_side": 0.800000011920929,
+        "done": 0.0,
+        "grasp": 1.0,
+        "insert": 0.15000000596046448,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "push": 4.399999618530273,
+        "release": 0.0,
+        "reorient": 0.0,
+        "retreat": 0.0,
+        "rotate": 1.0,
+        "seat": 1.0,
+        "squeeze": 0.0,
+        "withdraw": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Take the rod, drive the box onto the green target, and plant the tool on top.",
+      "paraphrase_id": "success:rod:box",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 42.89500000000349,
+      "controller_phase": "done",
+      "placed": true,
+      "stick_planted": true,
+      "succeeded_flag": true,
+      "kind": "success",
+      "layout_subtype": "place",
+      "required_type": "cube",
+      "stick_xy": [
+        0.41858208441594014,
+        0.2559912374508611
+      ],
+      "cube_xy": [
+        0.4254084300081878,
+        0.09600035013150653
+      ],
+      "pad_xy": [
+        0.44032929936412374,
+        -0.12278805072208668
+      ],
+      "stick_yaw": 0.07456993292545123,
+      "cube_yaw": 0.009957094756553125,
+      "stick_half": 0.1,
+      "cube_half": 0.04,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.3708378570471725,
+        0.6940591603295899,
+        0.3629347142086622
+      ],
+      "table_finish": "matte",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.7977686207302221,
+            0.8238689028042678,
+            0.3807369715449684
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "rgb": [
+            0.8657834531563862,
+            0.9172621141579538,
+            0.4455235288733447
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.7436420614559595,
+        0.10162758418703166
+      ],
+      "visual_mode": "place"
+    },
+    {
+      "group": "data",
+      "demo_id": "demo_4",
+      "num_steps": 394,
+      "return": 11.549999237060547,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "center": 0.0,
+        "descend_side": 0.800000011920929,
+        "done": 0.0,
+        "grasp": 0.0,
+        "insert": 1.149999976158142,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "push": 4.399999618530273,
+        "release": 0.0,
+        "reorient": 0.0,
+        "retreat": 0.0,
+        "rotate": 1.0,
+        "seat": 1.0,
+        "squeeze": 0.0,
+        "withdraw": 1.0
+      },
+      "episode_kind": "success",
+      "instruction": "Pick up the rod, push the cube onto the green pad, and plant the stick on the cube.",
+      "paraphrase_id": "success:rod:cube",
+      "is_success": true,
+      "failure_reason": null,
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 39.35000000000168,
+      "controller_phase": "done",
+      "placed": true,
+      "stick_planted": true,
+      "succeeded_flag": true,
+      "kind": "success",
+      "layout_subtype": "sized",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.10292657208815778,
+      "cube_half": 0.038,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [],
+      "table_texture": "checker",
+      "table_rgb": [
+        0.690653586368845,
+        0.5053532527718226,
+        0.4221478654811626
+      ],
+      "table_finish": "smooth",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.9777143731643256,
+            0.684311524457081,
+            0.9167309054223615
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "rgb": [
+            0.9010185547944808,
+            0.34771739225768594,
+            0.26299724552082526
+          ],
+          "finish": "matte"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.8186671819314628,
+        0.2275639415540137
+      ],
+      "visual_mode": "sized"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_0",
+      "num_steps": 671,
+      "return": 4.25,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "descend_side": 0.800000011920929,
+        "done": 0.0,
+        "grasp": 1.0,
+        "insert": 0.15000000596046448,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "push": 0.1499999761581421,
+        "recover": -1.0499999523162842,
+        "rotate": 1.0,
+        "squeeze": 0.0
+      },
+      "episode_kind": "swapped",
+      "instruction": "Use the stick to push the block onto the green pad and leave the stick standing on the cube.",
+      "paraphrase_id": "swapped:stick:block",
+      "is_success": false,
+      "failure_reason": "swapped",
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 67.07500000001149,
+      "controller_phase": "done",
+      "placed": false,
+      "stick_planted": false,
+      "succeeded_flag": false,
+      "kind": "swapped",
+      "layout_subtype": "swap_cube_pad",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.44,
+        -0.12
+      ],
+      "pad_xy": [
+        0.4,
+        0.1
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.1024998641182931,
+      "cube_half": 0.04020868235497854,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.4440333658922596,
+        0.28144774922748567,
+        0.6129404318878884
+      ],
+      "table_finish": "matte",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.8800975469127085,
+            0.7382209027146719,
+            0.8822591680894126
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "rgb": [
+            0.749063024858944,
+            0.6572559834779546,
+            0.5472573550390823
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.7954052163537394,
+        0.17771996581648622
+      ],
+      "visual_mode": "random"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_1",
+      "num_steps": 26,
+      "return": 0.0,
+      "phase_returns": {
+        "hold": 0.0
+      },
+      "episode_kind": "too_far",
+      "instruction": "Grasp the tool, slide the square block onto the green square, then stand the stick on it (unavailable due to posture).",
+      "paraphrase_id": "too_far:tool:square block",
+      "is_success": false,
+      "failure_reason": "too_far",
+      "action_mode": "hold_zero",
+      "fps": 10.0,
+      "sim_time": 2.504999999999969,
+      "controller_phase": "hold",
+      "placed": false,
+      "stick_planted": false,
+      "succeeded_flag": false,
+      "kind": "too_far",
+      "layout_subtype": "far_stick",
+      "required_type": "cube",
+      "stick_xy": [
+        0.3582642166535505,
+        -0.34
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.10497013385604992,
+      "cube_half": 0.040468333514534646,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.6848490813258804,
+            -0.16932733495598165
+          ]
+        }
+      ],
+      "table_texture": "png",
+      "table_rgb": [
+        0.688764452935898,
+        0.2934074361074471,
+        0.604209378456933
+      ],
+      "table_finish": "smooth",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.3302627535005321,
+            0.8624229950890494,
+            0.48395848976350386
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "rgb": [
+            0.7416795037360592,
+            0.7455045810779192,
+            0.8315007297874055
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.9463309265183917,
+        0.24545708071794844
+      ],
+      "visual_mode": "random"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_2",
+      "num_steps": 27,
+      "return": 2.499999761581421,
+      "phase_returns": {
+        "abort_retract": 1.0,
+        "approach_side": 1.4999998807907104
+      },
+      "episode_kind": "space_constraint",
+      "instruction": "Pick up the stick, push the block onto the green pad, and plant the stick on the cube.",
+      "paraphrase_id": "space_constraint:stick:block",
+      "is_success": false,
+      "failure_reason": "space_constraint",
+      "action_mode": "retract",
+      "fps": 10.0,
+      "sim_time": 2.679999999999965,
+      "controller_phase": "abort_retract",
+      "placed": false,
+      "stick_planted": false,
+      "succeeded_flag": false,
+      "kind": "space_constraint",
+      "layout_subtype": "blocked_approach",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.10411890679196385,
+      "cube_half": 0.04127760862584632,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [
+        {
+          "name": "junk_sphere",
+          "xy": [
+            0.33,
+            0.26
+          ]
+        }
+      ],
+      "table_texture": "png",
+      "table_rgb": [
+        0.27010911045230035,
+        0.6057434120588789,
+        0.5345129271316791
+      ],
+      "table_finish": "smooth",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.43044384909431044,
+            0.28681715201653923,
+            0.9259149969597029
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "rgb": [
+            0.6207040875433718,
+            0.2518867775373368,
+            0.7840247205599498
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.8693238463361782,
+        0.12112473558656259
+      ],
+      "visual_mode": "random"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_3",
+      "num_steps": 398,
+      "return": 4.149999618530273,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "descend_side": 0.800000011920929,
+        "done": 0.0,
+        "grasp": 1.0,
+        "insert": 0.15000000596046448,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "recover": -1.0,
+        "rotate": 1.0,
+        "squeeze": 0.0
+      },
+      "episode_kind": "cube_too_small",
+      "instruction": "Use the stick to push the cube onto the green pad and leave the stick standing on the cube.",
+      "paraphrase_id": "cube_too_small:stick:cube",
+      "is_success": false,
+      "failure_reason": "cube_too_small",
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 39.72500000000187,
+      "controller_phase": "done",
+      "placed": false,
+      "stick_planted": false,
+      "succeeded_flag": false,
+      "kind": "cube_too_small",
+      "layout_subtype": "cube_too_small",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.1035649681546896,
+      "cube_half": 0.012,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [],
+      "table_texture": "checker",
+      "table_rgb": [
+        0.5556693421376007,
+        0.28685821631226877,
+        0.3732029845254878
+      ],
+      "table_finish": "smooth",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.7409630242902658,
+            0.6219684741196245,
+            0.7069720848827653
+          ],
+          "finish": "smooth"
+        },
+        "cube": {
+          "rgb": [
+            0.9465376008190644,
+            0.4233941201649082,
+            0.3411549693530245
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.842976526511731,
+        0.06403750535697308
+      ],
+      "visual_mode": "random"
+    },
+    {
+      "group": "data_fail",
+      "demo_id": "demo_4",
+      "num_steps": 182,
+      "return": 4.75,
+      "phase_returns": {
+        "approach_side": 1.1999998092651367,
+        "descend_side": 1.3999998569488525,
+        "done": 0.0,
+        "grasp": 1.0,
+        "insert": 0.15000000596046448,
+        "lift": 1.0,
+        "lower": 0.0,
+        "press": 0.0,
+        "recover": -1.0,
+        "rotate": 1.0,
+        "squeeze": 0.0
+      },
+      "episode_kind": "stick_too_short",
+      "instruction": "Take the tool, drive the block onto the green target, and plant the tool on top.",
+      "paraphrase_id": "stick_too_short:tool:block",
+      "is_success": false,
+      "failure_reason": "stick_too_short",
+      "action_mode": "delta_q",
+      "fps": 10.0,
+      "sim_time": 18.155000000000673,
+      "controller_phase": "done",
+      "placed": false,
+      "stick_planted": false,
+      "succeeded_flag": false,
+      "kind": "stick_too_short",
+      "layout_subtype": "stick_too_short",
+      "required_type": "cube",
+      "stick_xy": [
+        0.4,
+        0.26
+      ],
+      "cube_xy": [
+        0.4,
+        0.1
+      ],
+      "pad_xy": [
+        0.44,
+        -0.12
+      ],
+      "stick_yaw": 0.0,
+      "cube_yaw": 0.0,
+      "stick_half": 0.04,
+      "cube_half": 0.037739056299546755,
+      "stick_lying": false,
+      "cube_present": true,
+      "distractors": [],
+      "table_texture": "png",
+      "table_rgb": [
+        0.6620009038249597,
+        0.5903431627851062,
+        0.6684718682145354
+      ],
+      "table_finish": "smooth",
+      "object_visuals": {
+        "stick": {
+          "rgb": [
+            0.2932501500663946,
+            0.7485794200649959,
+            0.8277568720882065
+          ],
+          "finish": "matte"
+        },
+        "cube": {
+          "rgb": [
+            0.31173447518038766,
+            0.9003240869087914,
+            0.7014698244965727
+          ],
+          "finish": "smooth"
+        }
+      },
+      "pad_rgb": [
+        0.0,
+        0.7794085385165319,
+        0.20767356637943274
+      ],
+      "visual_mode": "random"
+    }
+  ]
+}
