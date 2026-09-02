@@ -1,0 +1,7 @@
+# Python 3.12. This VM used torch 2.11.0+cpu; GPU wheels are fine for speed.
+mujoco==3.7.0
+numpy==2.2.6
+h5py==3.16.0
+opencv-python==5.0.0.93
+torch==2.11.0
+lerobot @ git+https://github.com/huggingface/lerobot.git@d36d404b65315139b7601a707f260a3db736462f

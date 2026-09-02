@@ -1,0 +1,7 @@
+.DS_Store
+.cursor/
+**/__pycache__/
+*.mp4
+Miniforge3*.sh
+**/datasets/**/regression/
+**/datasets/**/vm_test_lerobot/

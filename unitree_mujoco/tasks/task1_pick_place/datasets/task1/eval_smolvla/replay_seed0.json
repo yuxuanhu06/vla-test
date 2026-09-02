@@ -1,0 +1,49 @@
+{
+  "policy": "replay",
+  "policy_kind": "replay",
+  "n": 1,
+  "n_success": 1,
+  "success_rate": 1.0,
+  "instruction": "Place the red object on the green pad.",
+  "observation_state": "[x, y, z, rx, ry, rz, grip0, grip1]",
+  "observation_state_dim": 8,
+  "smolvla_action_dim": 15,
+  "episodes": [
+    {
+      "policy": "replay",
+      "placed": true,
+      "grasped": true,
+      "holding": false,
+      "cube_pad_xy": 0.014389645110831711,
+      "cube": [
+        0.33331072003259227,
+        0.09528712798908465,
+        0.9316645787794229
+      ],
+      "pad": [
+        0.3277190672155265,
+        0.08202834579805807,
+        0.855
+      ],
+      "return": 3.4,
+      "fired_terms": [
+        "approach_correct",
+        "carry_toward_pad",
+        "grasp_correct",
+        "lift_clear"
+      ],
+      "mean_abs_action": 0.01471785083413124,
+      "mean_gripper": -0.0006892021629028022,
+      "num_policy_steps": 148,
+      "sim_time": 14.705000000000899,
+      "wall_time": 221.14552591599931,
+      "instruction": "Place the red object on the green pad.",
+      "expert_init": true,
+      "observation_state_dim": 6,
+      "action_dim": 15,
+      "layout_subtype": "replay",
+      "episode_index": 0,
+      "video": "/home/j71438125/vla_test/unitree_mujoco/tasks/task1_pick_place/datasets/task1/eval_smolvla/replay_seed0.mp4"
+    }
+  ]
+}

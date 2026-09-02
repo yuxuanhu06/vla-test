@@ -17,6 +17,14 @@ EPISODE_KINDS = (
     "stick_too_short",
     "stick_lying",
 )
+# swapped:Stick/cube configuration is swapped.
+# too_far:Required object geometry exceeds the valid manipulation range.
+# no_cube:Cube is unavailable.
+# space_constraint:Manipulation is blocked by workspace constraints.
+# cube_too_small:Cube dimensions violate the supported range.
+# stick_too_short:Stick dimensions violate the supported range.
+# stick_lying:Stick begins in an invalid lying configuration.
+
 FAILURE_REASONS = (
     "swapped",
     "too_far",

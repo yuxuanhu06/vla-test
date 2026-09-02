@@ -1,7 +1,7 @@
 {
   "task_id": "task2",
   "language_instruction": "Pick up the requested object and place it on the green pad.",
-  "hdf5": "libero_style.hdf5",
+  "hdf5": "pick_correct_object_task2.hdf5",
   "num_success": 4,
   "num_fail": 6,
   "demos": [

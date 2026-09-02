@@ -10,6 +10,9 @@ REWARD_CLIP = 2.0
 TASK_ID = "task1"
 
 EPISODE_KINDS = ("success", "space_constraint", "kinematics_limit")
+# space_constraint: Manipulation is blocked by workspace or spacing constraints.
+# kinematics_limit: Required configuration is unavailable due to robot posture or reachability.
+
 FAILURE_REASONS = ("space_constraint", "kinematics_limit")
 
 ACTION_JOINTS = (

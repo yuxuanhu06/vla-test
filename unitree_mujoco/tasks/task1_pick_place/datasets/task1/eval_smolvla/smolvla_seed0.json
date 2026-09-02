@@ -1,0 +1,91 @@
+{
+  "policy": "lerobot/smolvla_libero",
+  "policy_kind": "smolvla",
+  "n": 1,
+  "n_success": 0,
+  "success_rate": 0.0,
+  "instruction": "Pick up the red block and place it on the green pad.",
+  "observation_state": "[x, y, z, rx, ry, rz, grip0, grip1]",
+  "observation_state_dim": 8,
+  "smolvla_action_dim": 7,
+  "episodes": [
+    {
+      "policy": "smolvla",
+      "placed": false,
+      "grasped": false,
+      "holding": false,
+      "cube_pad_xy": 0.21064979148818347,
+      "cube": [
+        0.31134641724587153,
+        0.29204089539209144,
+        0.8608922445797835
+      ],
+      "pad": [
+        0.3277190672155265,
+        0.08202834579805807,
+        0.855
+      ],
+      "return": -57.0,
+      "fired_terms": [
+        "approach_correct"
+      ],
+      "mean_abs_action": 0.21679379045963287,
+      "mean_gripper": -0.690306544303894,
+      "num_policy_steps": 300,
+      "sim_time": 29.999999999998316,
+      "wall_time": 773.0072208979982,
+      "instruction": "Pick up the red block and place it on the green pad.",
+      "expert_init": false,
+      "observation_state_dim": 8,
+      "action_dim": 7,
+      "kind": "success",
+      "layout_subtype": "working_band",
+      "cube_xy": [
+        0.33111371391832833,
+        0.2308077204017929
+      ],
+      "pad_xy": [
+        0.3277190672155265,
+        0.08202834579805807
+      ],
+      "cube_yaw": -0.1119227624750593,
+      "tipped": false,
+      "distractors": [
+        {
+          "name": "junk_0",
+          "xy": [
+            0.5544580501341494,
+            -0.0742493923504633
+          ]
+        },
+        {
+          "name": "junk_1",
+          "xy": [
+            0.69347708024376,
+            0.060213054786874914
+          ]
+        },
+        {
+          "name": "junk_2",
+          "xy": [
+            0.5658708472101768,
+            -0.04854105078107174
+          ]
+        }
+      ],
+      "cube_finish": "smooth",
+      "cube_rgb": [
+        0.36582937101109625,
+        0.9439810717600817,
+        0.16322210842282328
+      ],
+      "table_rgb": [
+        0.4836496766719489,
+        0.551223108541199,
+        0.4489937453059826
+      ],
+      "episode_index": 0,
+      "video": "/home/j71438125/vla_test/unitree_mujoco/tasks/task1_pick_place/datasets/task1/eval_smolvla/smolvla_seed0.mp4"
+    }
+  ]
+}

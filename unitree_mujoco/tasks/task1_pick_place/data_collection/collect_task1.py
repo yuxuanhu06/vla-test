@@ -21,7 +21,7 @@ if TASK_DIR not in sys.path:
 from task1_hand_controller import Task1HandController
 
 from data_collection.boundary_policy import BoundaryPolicy
-from data_collection.libero_writer import LiberoPackWriter
+from data_collection.libero_writer import LiberoPackWriter, demo_gripper_is_left
 from data_collection.randomize import randomize_episode
 from data_collection.recorder import (
     EpisodeRecorder,
@@ -164,10 +164,11 @@ def run_episode(model, kind, rng, seconds, verbose):
     return recorder, meta, sink.getvalue()
 
 
-def _validate_packed(hdf5_path, model_nq, rows):
+def _validate_packed(hdf5_path, model, rows):
     import h5py
 
     errors = []
+    model_nq = int(model.nq)
     for row in rows:
         if row["num_steps"] < 1:
             errors.append(f"{row['demo_id']} has no steps")
@@ -211,8 +212,10 @@ def _validate_packed(hdf5_path, model_nq, rows):
                     errors.append(f"{gname}/{name} is_success={ok} in {gname}")
                 if int(demo["rewards"][-1]) != int(ok):
                     errors.append(f"{gname}/{name} rewards[-1] != is_success")
-                if not demo.attrs.get("instruction"):
-                    errors.append(f"{gname}/{name} missing instruction")
+                if not demo_gripper_is_left(demo, model):
+                    errors.append(f"{gname}/{name} gripper_states is not the left Dex3")
+                if not demo.attrs.get("language_instruction"):
+                    errors.append(f"{gname}/{name} missing language_instruction")
                 if expect_ok is False and not demo.attrs.get("failure_reason"):
                     errors.append(f"{gname}/{name} missing failure_reason")
     return errors
@@ -276,7 +279,7 @@ def main():
     manifest_path = os.path.join(out_root, "manifest.json")
     writer.write_manifest(manifest_path)
     writer.finalize()
-    errors = _validate_packed(hdf5_path, model.nq, writer.rows)
+    errors = _validate_packed(hdf5_path, model, writer.rows)
     print()
     print(f"wrote {len(writer.rows)} demos to {hdf5_path}")
     if errors:

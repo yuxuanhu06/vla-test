@@ -17,6 +17,10 @@ EPISODE_KINDS = (
     "wrong_object",
     "neighbor_collision",
 )
+# tipped:object tipped
+# wrong_object:the requested object not on the table
+# neighbor_collision:knock
+
 FAILURE_REASONS = (
     "space_constraint",
     "kinematics_limit",

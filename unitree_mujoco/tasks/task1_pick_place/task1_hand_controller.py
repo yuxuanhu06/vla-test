@@ -2,6 +2,37 @@ import numpy as np
 import mujoco
 
 
+def mat_to_axis_angle(mat):
+    """Convert a 3x3 rotation matrix to an axis-angle vector."""
+    rot = np.asarray(mat, dtype=float).reshape(3, 3)
+    cos = float(np.clip((np.trace(rot) - 1.0) * 0.5, -1.0, 1.0))
+    angle = float(np.arccos(cos))
+    if angle < 1e-8:
+        return np.zeros(3, dtype=np.float64)
+    axis = np.array(
+        [
+            rot[2, 1] - rot[1, 2],
+            rot[0, 2] - rot[2, 0],
+            rot[1, 0] - rot[0, 1],
+        ],
+        dtype=float,
+    )
+    axis = axis / (2.0 * np.sin(angle) + 1e-12)
+    return axis * angle
+
+
+def axis_angle_to_mat(vec):
+    """Rodrigues map from an axis-angle vector to a 3x3 rotation matrix."""
+    w = np.asarray(vec, dtype=float).reshape(3)
+    angle = float(np.linalg.norm(w))
+    if angle < 1e-9:
+        return np.eye(3)
+    axis = w / angle
+    kx, ky, kz = axis
+    k = np.array([[0.0, -kz, ky], [kz, 0.0, -kx], [-ky, kx, 0.0]])
+    return np.eye(3) + np.sin(angle) * k + (1.0 - np.cos(angle)) * (k @ k)
+
+
 class Task1HandController:
     """Pick the red cube with the left Dex3 hand and place it on the green pad.
 
@@ -84,9 +115,10 @@ class Task1HandController:
         "right_elbow_joint": 0.90,
     }
 
-    def __init__(self, model, data):
+    def __init__(self, model, data, expert_init=True):
         self.model = model
         self.data = data
+        self.expert_init = bool(expert_init)
 
         self.ik_data = mujoco.MjData(model)
 
@@ -234,7 +266,8 @@ class Task1HandController:
         self.place_seeded = False
 
         self.q_ik = self.q_home[self.ik_acts].copy()
-        self._start_at_travel_pose()
+        if expert_init:
+            self._start_at_travel_pose()
         self.goal = self._site_pos_for(self.q_ik)
         self.setpoint_done = True
 
@@ -248,9 +281,14 @@ class Task1HandController:
         self.log_period = 1.0
         self.pick_pos = data.xpos[self.cube_id].copy()
         self.holding = False
+        self.libero_pos_clip = 0.04
+        self.libero_ori_clip = 0.20
+        self._gripper_alpha = 0.0
+        self._libero_closing = False
 
         self._set_fingers_open()
-        self._report_feasibility()
+        if expert_init:
+            self._report_feasibility()
 
     # ------------------------------------------------------------------
     # model helpers
@@ -590,6 +628,114 @@ class Task1HandController:
         current = self.q_target[self.ik_acts]
         delta = np.clip(self.q_ik - current, -limit, limit)
         self.q_target[self.ik_acts] = current + delta
+
+    def _ik_track_pose(self, q, goal_pos, goal_rot, iters):
+        """Jacobian IK toward a Cartesian pose. Does not use expert ori priors."""
+        scratch = self.ik_data
+        scratch.qpos[:] = self.data.qpos
+        q = np.asarray(q, dtype=float).copy()
+        goal_pos = np.asarray(goal_pos, dtype=float).reshape(3)
+        goal_rot = np.asarray(goal_rot, dtype=float).reshape(3, 3)
+
+        eye6 = np.eye(6)
+        eye_n = np.eye(len(q))
+        w_inv = np.diag(1.0 / self.JOINT_WEIGHTS)
+        jacp = np.zeros((3, self.model.nv))
+        jacr = np.zeros((3, self.model.nv))
+
+        for _ in range(iters):
+            scratch.qpos[self.ik_qadr] = q
+            mujoco.mj_kinematics(self.model, scratch)
+            mujoco.mj_comPos(self.model, scratch)
+
+            pos = scratch.site_xpos[self.site_id]
+            rot = scratch.site_xmat[self.site_id].reshape(3, 3)
+            r_err = goal_rot @ rot.T
+            error = np.concatenate((goal_pos - pos, mat_to_axis_angle(r_err)))
+
+            mujoco.mj_jacSite(self.model, scratch, jacp, jacr, self.site_id)
+            jac = np.vstack((jacp, jacr))[:, self.ik_dofs]
+
+            damped = jac @ w_inv @ jac.T + self.ik_damping * eye6
+            dq = w_inv @ jac.T @ np.linalg.solve(damped, error)
+            jac_pinv = w_inv @ jac.T @ np.linalg.inv(damped)
+            bias = self.null_gain * (self.REST_POSE - q) + self._limit_push(q)
+            dq += (eye_n - jac_pinv @ jac) @ bias
+
+            step = float(np.linalg.norm(dq))
+            if step > self.max_ik_step:
+                dq *= self.max_ik_step / step
+            q = np.clip(q + dq, self.ik_lo, self.ik_hi)
+
+        return q
+
+    def ee_state(self):
+        """6-D observation.state: site xyz + axis-angle."""
+        pos, rot = self._site_pose()
+        return np.concatenate([pos, mat_to_axis_angle(rot)]).astype(np.float32)
+
+    def _set_gripper_from_scalar(self, value):
+        """Map a LIBERO gripper command in ~[-1, 1] onto the seven Dex3 joints."""
+        alpha = float(np.clip((np.clip(value, -1.0, 1.0) + 1.0) * 0.5, 0.0, 1.0))
+        self._gripper_alpha = alpha
+        self._libero_closing = alpha > 0.35
+        for act_id in self.finger_acts:
+            opened = self.finger_open_target[act_id]
+            closed = self.finger_close_target.get(act_id, opened)
+            self.q_target[act_id] = opened + alpha * (closed - opened)
+
+    def set_libero_action(self, action):
+        """Apply a 7-D LIBERO action: relative EE pose + gripper. Not step()."""
+        action = np.asarray(action, dtype=float).reshape(-1)
+        if action.size < 7:
+            raise ValueError(f"expected 7-D LIBERO action, got shape {action.shape}")
+        pos_delta = np.clip(action[:3], -self.libero_pos_clip, self.libero_pos_clip)
+        ori_delta = np.clip(action[3:6], -self.libero_ori_clip, self.libero_ori_clip)
+        site_pos, site_rot = self._site_pose()
+        goal_pos = site_pos + pos_delta
+        goal_rot = axis_angle_to_mat(ori_delta) @ site_rot
+        self.q_ik = self._ik_track_pose(self.q_ik, goal_pos, goal_rot, self.ik_iters)
+        self._set_gripper_from_scalar(float(action[6]))
+
+    def apply_delta_q(self, delta, act_ids, act_qadr, action_clip=0.25, ref_qpos=None):
+        """Hold a recorded 15-D joint delta as q_target = qpos + delta (replay only).
+
+        Pass the recorded joint qpos as ref_qpos. Using the live qpos would turn
+        a small PD tracking error into a hold-in-place command.
+        """
+        delta = np.clip(np.asarray(delta, dtype=float).reshape(-1), -action_clip, action_clip)
+        if ref_qpos is None:
+            ref = self.data.qpos[act_qadr]
+        else:
+            ref = np.asarray(ref_qpos, dtype=float).reshape(-1)
+        if ref.shape[0] != delta.shape[0]:
+            raise ValueError(
+                f"ref_qpos length {ref.shape[0]} != action length {delta.shape[0]}"
+            )
+        self.q_target[act_ids] = ref + delta
+        self.q_ik = self.q_target[self.ik_acts].copy()
+        alphas = []
+        for act_id in self.finger_acts:
+            opened = self.finger_open_target[act_id]
+            closed = self.finger_close_target.get(act_id, opened)
+            span = closed - opened
+            if abs(span) > 1e-6:
+                alphas.append((self.q_target[act_id] - opened) / span)
+        self._gripper_alpha = float(np.mean(alphas)) if alphas else 0.0
+        self._libero_closing = self._gripper_alpha > 0.35
+
+    def pd_tick(self, slew=True):
+        """One PD control tick. Does not run the expert state machine."""
+        dt = float(self.model.opt.timestep)
+        self.phase_time += dt
+        if slew:
+            self._slew_to_ik(dt)
+        self._apply_pd(bool(self._libero_closing))
+
+    def refresh_hold_flag(self):
+        firm = bool(self._grip_is_firm())
+        self.holding = firm
+        return firm
 
     def _reached(self, pos_error, tilt, tol):
         return self.setpoint_done and pos_error < tol and tilt < self.tilt_tol

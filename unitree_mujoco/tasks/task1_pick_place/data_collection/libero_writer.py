@@ -12,7 +12,35 @@ from .schema import ACTION_JOINTS, IMAGE_SIZE, RECORD_HZ, SUCCESS_INSTRUCTIONS, 
 CANONICAL_INSTRUCTION = SUCCESS_INSTRUCTIONS[0]
 SUBTITLE_SUCCESS = "success demonstrations"
 SUBTITLE_FAIL = "boundary failures (do not use for BC)"
+# Left Dex3, same order as the last 7 entries of ACTION_JOINTS / actions.
 GRIPPER_JOINTS = ACTION_JOINTS[-7:]
+
+
+def _actuator_index(model, joint_name):
+    for act_id in range(model.nu):
+        joint_id = int(model.actuator_trnid[act_id, 0])
+        if model.joint(joint_id).name == joint_name:
+            return act_id
+    raise KeyError(f"no actuator for joint {joint_name!r}")
+
+
+def left_gripper_states(joint, model):
+    """Columns of actuator-order qpos for the left Dex3, in ACTION_JOINTS order.
+
+    Do not use joint[:, -7:]: that is the parked right Dex3 in g1_with_hand.xml.
+    """
+    ids = [_actuator_index(model, name) for name in GRIPPER_JOINTS]
+    return np.asarray(joint, np.float32)[:, ids]
+
+
+def demo_gripper_is_left(demo, model):
+    """True if obs/gripper_states is the left Dex3, not the parked right hand."""
+    joint = np.asarray(demo["obs/joint_states"])
+    grip = np.asarray(demo["obs/gripper_states"])
+    expected = left_gripper_states(joint, model)
+    if grip.shape != expected.shape:
+        return False
+    return bool(np.allclose(grip, expected))
 
 
 def _event_mask(recorder):
@@ -70,6 +98,7 @@ class LiberoPackWriter:
         group.attrs["fps"] = float(RECORD_HZ)
         group.attrs["action_space"] = "delta_q"
         group.attrs["action_joints"] = [n.encode() for n in ACTION_JOINTS]
+        group.attrs["gripper_joints"] = [n.encode() for n in GRIPPER_JOINTS]
         group.attrs["image_size"] = int(IMAGE_SIZE)
 
     def append(self, recorder, meta):
@@ -92,7 +121,7 @@ class LiberoPackWriter:
         states = np.asarray(recorder.full_qpos, np.float32)
         if states.size == 0:
             states = np.zeros((t, self.nq), dtype=np.float32)
-        gripper = joint[:, -len(GRIPPER_JOINTS) :]
+        gripper = left_gripper_states(joint, recorder.model)
         ee_states = np.concatenate([ee_pos, ee_ori], axis=1)
         robot_states = np.concatenate([gripper, ee_pos, ee_ori], axis=1)
 
@@ -142,7 +171,6 @@ class LiberoPackWriter:
         demo.attrs["is_success"] = is_success
         demo.attrs["failure_reason"] = str(meta.get("failure_reason") or "")
         demo.attrs["episode_kind"] = str(meta.get("episode_kind") or "")
-        demo.attrs["instruction"] = instruction
         demo.attrs["language_instruction"] = instruction
         if meta.get("required_type"):
             demo.attrs["required_type"] = str(meta["required_type"])
@@ -153,6 +181,7 @@ class LiberoPackWriter:
             demo.attrs["init_state"] = np.asarray(init_state, np.float32)
         demo.attrs["reward_term_names"] = [n.encode() for n in recorder.term_names]
         demo.attrs["action_joints"] = [n.encode() for n in ACTION_JOINTS]
+        demo.attrs["gripper_joints"] = [n.encode() for n in GRIPPER_JOINTS]
 
         if is_success:
             self._n_ok += 1

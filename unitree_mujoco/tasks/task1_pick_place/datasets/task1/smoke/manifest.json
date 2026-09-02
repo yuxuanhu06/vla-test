@@ -1,7 +1,7 @@
 {
   "task_id": "task1",
   "language_instruction": "Pick up the red block and place it on the green pad.",
-  "hdf5": "libero_style.hdf5",
+  "hdf5": "pick_place_task1.hdf5",
   "num_success": 5,
   "num_fail": 5,
   "demos": [
